@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruralna Mehanizacija</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container header-grid">
+      <a class="brand" href="#pocetak" aria-label="Ruralna Mehanizacija logotip">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 180 80" xmlns="http://www.w3.org/2000/svg" role="img">
+            <rect x="4" y="4" width="72" height="72" rx="10" fill="none" stroke="#86BC25" stroke-width="8" />
+            <rect x="20" y="20" width="40" height="40" fill="#86BC25" rx="6" />
+            <path d="M46 30h-8v-8h-8v36h16c8 0 12-4.7 12-14S54 30 46 30zm-8 24V38h8c4 0 6 2.9 6 8s-2 8-6 8h-8z" fill="#1F212A" />
+            <text x="90" y="38" font-family="'Barlow', sans-serif" font-weight="800" font-size="30" fill="#86BC25" letter-spacing="4">RURALNA</text>
+            <text x="92" y="64" font-family="'Barlow', sans-serif" font-weight="500" font-size="18" fill="#86BC25" letter-spacing="12">MEHANIZACIJA</text>
+          </svg>
+        </span>
+      </a>
+      <nav class="primary-nav" aria-label="Glavna navigacija">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigacija">Meni</button>
+        <ul id="navigacija" class="nav-list">
+          <li><a href="#prednosti">Prednosti</a></li>
+          <li><a href="#ponuda">Lager</a></li>
+          <li><a href="#ulja">Ulja</a></li>
+          <li><a href="#recenzije">Recenzije</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="tel:+38512345678">Nazovi odmah</a>
+    </div>
+  </header>
+
+  <main id="pocetak">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="eyebrow">GUME I ULJA ODMAH DOSTUPNI</p>
+          <h1 id="hero-heading">Sve za vašu mehanizaciju i flotu – bez čekanja</h1>
+          <p class="lead">
+            Ruralna Mehanizacija drži lager traktorskih, kamionskih i SUV/pick-up guma te punu paletu motornog i
+            hidrauličkog ulja. Svaka dimenzija i svaka gradacija spremna je za isporuku isti dan, kako polje i flota nikad
+            ne bi stali.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#ponuda">Provjeri lager</a>
+            <a class="btn btn--ghost" href="#demo" data-scroll>Zatraži povratni poziv</a>
+          </div>
+          <dl class="hero-stats" aria-label="Brze statistike">
+            <div>
+              <dt>1.200+</dt>
+              <dd>Guma na skladištu u svakom trenutku</dd>
+            </div>
+            <div>
+              <dt>48h</dt>
+              <dd>Isporuka ili montaža na terenu</dd>
+            </div>
+            <div>
+              <dt>0 dana</dt>
+              <dd>Čekanja na ulja i potrošni materijal</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="hero__visual" role="presentation">
+          <div class="hero__card">
+            <h2>Lager uživo</h2>
+            <p>Dimenzije guma i tipovi ulja spremni za vaše traktore, kombajne i pick-up vozila.</p>
+            <div class="hero__status">
+              <span class="status-pill status-pill--online">Traktorske gume: dostupno</span>
+              <span class="status-pill">SUV &amp; pick-up: 40 kompleta</span>
+              <span class="status-pill">Ulja: 450 referenci</span>
+            </div>
+            <div class="hero__chart" aria-hidden="true">
+              <div class="hero__chart-line"></div>
+            </div>
+            <div class="hero__avatars" aria-hidden="true">
+              <figure>
+                <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=160&q=80" alt="" loading="lazy" />
+                <figcaption>Jozo</figcaption>
+              </figure>
+              <figure>
+                <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=160&q=80" alt="" loading="lazy" />
+                <figcaption>Ana</figcaption>
+              </figure>
+              <figure>
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80" alt="" loading="lazy" />
+                <figcaption>Marko</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prednosti" class="section services" aria-labelledby="usluge-heading">
+      <div class="container">
+        <div class="section__intro">
+          <p class="eyebrow">ZAŠTO RURALNA MEHANIZACIJA</p>
+          <h2 id="usluge-heading">Uvijek spremni s pravim gumama i uljima</h2>
+          <p>
+            Naš lager u Osijeku opslužuje poljoprivredna gospodarstva, servisne radionice i prijevoznike. Sve dimenzije
+            držimo spremne, a tim stručnjaka organizira montažu i dostavu kad vama odgovara.
+          </p>
+        </div>
+        <div class="service-grid">
+          <article class="card">
+            <div class="icon icon--pulse" aria-hidden="true"></div>
+            <h3>Lager bez čekanja</h3>
+            <p>Više od 1.200 guma i 450 vrsta ulja na skladištu svaki dan, uz stalnu nadopunu.</p>
+            <ul>
+              <li>Specifične dimenzije po narudžbi</li>
+              <li>Premium i budget linije</li>
+              <li>Certificirana skladišna kontrola</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="icon icon--spark" aria-hidden="true"></div>
+            <h3>Stručna montaža</h3>
+            <p>Mobilne ekipe dolaze na polje ili dvorište i mijenjaju gume bez zastoja u radu.</p>
+            <ul>
+              <li>Montaža na terenu u 24 sata</li>
+              <li>Balansiranje i kalibracija tlaka</li>
+              <li>Servis felgi i ventila</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="icon icon--shield" aria-hidden="true"></div>
+            <h3>Podrška 0-24</h3>
+            <p>Naši savjetnici preporučuju idealna ulja i gume za svaku primjenu i tip terena.</p>
+            <ul>
+              <li>Analiza trošenja guma</li>
+              <li>Praćenje intervala zamjene ulja</li>
+              <li>Hitna dostava noću i vikendom</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ponuda" class="section catalog" aria-labelledby="ponuda-heading">
+      <div class="container">
+        <div class="section__intro">
+          <p class="eyebrow">LAGER</p>
+          <h2 id="ponuda-heading">Provjerite što je trenutno na skladištu</h2>
+          <p>
+            Lista se osvježava više puta dnevno – sve što vidite dostupno je odmah za preuzimanje, dostavu ili montažu.
+            Od traktora i kombajna do SUV i teretnih vozila, pokrivamo svaki set kotača i svaku vrstu ulja.
+          </p>
+          <div class="tab-controls" role="tablist" aria-label="Kategorije ponude">
+            <button class="tab-btn is-active" role="tab" aria-selected="true" data-category="tractor-tires">Traktorske gume</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-category="industrial-tires">Gume za kamione &amp; pick-up vozila</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-category="engine-oils">Motorna ulja</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-category="hydraulic-oils">Hidraulička ulja</button>
+          </div>
+        </div>
+        <div class="catalog-grid" role="tabpanel" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="ulja" class="section sensors" aria-labelledby="ulja-heading">
+      <div class="container sensors__layout">
+        <div>
+          <p class="eyebrow">ULJA ZA SVAKU NAMJENU</p>
+          <h2 id="ulja-heading">Od motora do hidraulike – sve dostupno</h2>
+          <p>
+            Odaberite originalna i OEM kompatibilna ulja koja čuvaju vaše strojeve. Svaka šifra vodi se po seriji i
+            lotu, a uzorkovanje ulja omogućuje planiranje zamjene prije zastoja.
+          </p>
+          <div class="sensor-metrics">
+            <article>
+              <h3>AgroDrive 15W-40</h3>
+              <p>Mineralno motorno ulje za traktore s mokrim kočnicama, dostupno u pakiranjima 5L, 20L i 205L.</p>
+            </article>
+            <article>
+              <h3>HydraForce HV 46</h3>
+              <p>Visokoviskozno hidrauličko ulje s dodatkom protiv pjenjenja za prednje utovarivače i kombajne.</p>
+            </article>
+            <article>
+              <h3>TransAxle LS 80W-90</h3>
+              <p>Diferencijalno ulje s LS aditivima za tegljače i pick-up vozila s blokadom diferencijala.</p>
+            </article>
+          </div>
+        </div>
+        <div class="sensors__visual" role="presentation">
+          <div class="radar">
+            <div class="radar__beam"></div>
+            <div class="radar__ring"></div>
+            <div class="radar__ring radar__ring--2"></div>
+            <div class="radar__ring radar__ring--3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="demo" class="section cta-section" aria-labelledby="demo-heading">
+      <div class="container cta-section__inner">
+        <div>
+          <p class="eyebrow">POVRATNI POZIV</p>
+          <h2 id="demo-heading">Recite kada da vas nazovemo</h2>
+          <p>
+            Odmah provjeravamo stanje lagera i rezerviramo gume ili ulja za vaš vozni park. Javite nam se i dogovorite
+            termin isporuke ili montaže koji odgovara vašem rasporedu.
+          </p>
+        </div>
+        <form class="cta-form" aria-label="Zatražite povratni poziv">
+          <label>
+            <span>Ime i prezime</span>
+            <input type="text" name="ime" required placeholder="Vaše ime" />
+          </label>
+          <label>
+            <span>Broj telefona</span>
+            <input type="tel" name="telefon" required placeholder="091 000 0000" />
+          </label>
+          <label>
+            <span>Što vas zanima?</span>
+            <select name="paket" required>
+              <option value="">Odaberite</option>
+              <option value="Traktorske gume">Traktorske gume</option>
+              <option value="Gume za kamione i pick-up vozila">Gume za kamione i pick-up vozila</option>
+              <option value="Motorna ulja">Motorna ulja</option>
+              <option value="Hidraulička ulja">Hidraulička ulja</option>
+              <option value="Kompletna opskrba flote">Kompletna opskrba flote</option>
+            </select>
+          </label>
+          <label>
+            <span>Preferirani termin</span>
+            <input type="text" name="termin" placeholder="Npr. danas nakon 15h" />
+          </label>
+          <button type="submit" class="btn btn--primary">Nazovite me</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="recenzije" class="section testimonials" aria-labelledby="recenzije-heading">
+      <div class="container">
+        <div class="section__intro">
+          <p class="eyebrow">ISKUSTVA KLIJENATA</p>
+          <h2 id="recenzije-heading">Kad treba odmah – naši klijenti znaju koga zovu</h2>
+        </div>
+        <div class="testimonial-carousel" aria-live="polite"></div>
+        <div class="carousel-controls" role="group" aria-label="Navigacija recenzija">
+          <button class="carousel-btn" data-direction="prev" aria-label="Prethodna recenzija">&#9664;</button>
+          <button class="carousel-btn" data-direction="next" aria-label="Sljedeća recenzija">&#9654;</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="kontakt" class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand brand--footer">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 180 80" xmlns="http://www.w3.org/2000/svg" role="img">
+              <rect x="4" y="4" width="72" height="72" rx="10" fill="none" stroke="#86BC25" stroke-width="8" />
+              <rect x="20" y="20" width="40" height="40" fill="#86BC25" rx="6" />
+              <path d="M46 30h-8v-8h-8v36h16c8 0 12-4.7 12-14S54 30 46 30zm-8 24V38h8c4 0 6 2.9 6 8s-2 8-6 8h-8z" fill="#1F212A" />
+              <text x="90" y="38" font-family="'Barlow', sans-serif" font-weight="800" font-size="30" fill="#86BC25" letter-spacing="4">RURALNA</text>
+              <text x="92" y="64" font-family="'Barlow', sans-serif" font-weight="500" font-size="18" fill="#86BC25" letter-spacing="12">MEHANIZACIJA</text>
+            </svg>
+          </span>
+        </div>
+        <p>© <span id="godina"></span> Ruralna Mehanizacija. Sva prava pridržana.</p>
+      </div>
+      <div>
+        <h3>Kontakt</h3>
+        <ul>
+          <li><a href="tel:+38512345678">+385 1 234 5678</a></li>
+          <li><a href="mailto:info@ruralna.hr">info@ruralna.hr</a></li>
+          <li>Industrijska zona 14, 31000 Osijek</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Radno vrijeme</h3>
+        <ul>
+          <li>Pon - Pet: 08:00 – 18:00</li>
+          <li>Subota: 09:00 – 13:00</li>
+          <li>Nedjeljom i blagdanima zatvoreno</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Povežimo se</h3>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">
+            <span aria-hidden="true">Fb</span>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <span aria-hidden="true">Ig</span>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <span aria-hidden="true">In</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="call-floating" href="tel:+38512345678" title="Nazovi Ruralna Mehanizacija">
+    <span class="call-floating__icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true">
+        <path fill="currentColor" d="M6.62 10.79a15.09 15.09 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.67.59 1 1 0 011 1v3.5a1 1 0 01-1 1A18.5 18.5 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.67 1 1 0 01-.24 1.02z" />
+      </svg>
+    </span>
+    <span class="call-floating__text">Nazovi sada</span>
+  </a>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
