@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruralna mehanizacija – Gume, OEM ulja i JD dijelovi odmah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #85BB25;
+      --secondary: #87B931;
+      --bg-dark: #1D2029;
+      --surface-dark: #25272F;
+      --neutral: #797B81;
+      --text-light: #F5F5F7;
+      --text-muted: #B3B6BE;
+      --radius: 18px;
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .layout {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: var(--bg-dark);
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      gap: 8px;
+    }
+
+    .hero {
+      padding: 32px 20px 48px;
+      position: relative;
+    }
+
+    .hero-inner {
+      background: linear-gradient(135deg, rgba(133, 187, 37, 0.08), rgba(37, 39, 47, 0.9));
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      display: grid;
+      gap: 32px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .brand-tagline {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--bg-dark);
+      font-size: 1.6rem;
+      box-shadow: inset 0 0 0 4px rgba(29, 32, 41, 0.8);
+    }
+
+    .hero h1 {
+      font-size: clamp(1.9rem, 6vw, 3rem);
+      margin: 16px 0 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .hero p {
+      margin: 0 0 24px;
+      color: var(--text-muted);
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .cta {
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: var(--primary);
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 12px 24px rgba(133, 187, 37, 0.3);
+    }
+
+    .cta.secondary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 12px 24px rgba(133, 187, 37, 0.25), inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+    }
+
+    .stock-card {
+      background: var(--surface-dark);
+      border-radius: var(--radius);
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: grid;
+      gap: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .stock-card h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .stock-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .stock-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 14px;
+      padding: 12px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .stock-badge {
+      background: var(--primary);
+      color: var(--bg-dark);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      animation: pulse-badge 1.2s ease-out 1;
+      box-shadow: 0 0 0 0 rgba(133, 187, 37, 0.6);
+    }
+
+    @keyframes pulse-badge {
+      0% { box-shadow: 0 0 0 0 rgba(133, 187, 37, 0.6); }
+      100% { box-shadow: 0 0 0 12px rgba(133, 187, 37, 0); }
+    }
+
+    .finder {
+      margin: -40px 20px 48px;
+      background: var(--surface-dark);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 24px 20px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tab-button {
+      flex: 1;
+      min-width: 160px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-light);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .tab-button.active {
+      background: var(--primary);
+      color: var(--bg-dark);
+    }
+
+    .tab-content {
+      display: none;
+      margin-top: 24px;
+    }
+
+    .tab-content.active {
+      display: grid;
+      gap: 16px;
+    }
+
+    .finder-row {
+      display: grid;
+      gap: 16px;
+    }
+
+    select {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--bg-dark);
+      color: var(--text-light);
+      font-size: 0.95rem;
+      appearance: none;
+    }
+
+    section {
+      padding: 48px 20px;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .catalog {
+      display: grid;
+      gap: 16px;
+    }
+
+    .accordion {
+      background: var(--surface-dark);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .accordion-header {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .accordion-header span {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(29, 32, 41, 0.75);
+    }
+
+    .accordion.open .accordion-body {
+      max-height: 600px;
+    }
+
+    .product-list {
+      display: grid;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 16px;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .product-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      background: rgba(133, 187, 37, 0.15);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      color: var(--text-light);
+    }
+
+    .availability {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.85rem;
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 10px 20px rgba(133, 187, 37, 0.25);
+    }
+
+    .why-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .why-card {
+      background: var(--surface-dark);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: grid;
+      gap: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .icon-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(133, 187, 37, 0.15);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .brand-wall {
+      background: #161821;
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      display: grid;
+      gap: 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-logos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 16px;
+      align-items: center;
+    }
+
+    .brand-logo-tile {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      padding: 18px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .delivery-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .delivery-card {
+      background: var(--surface-dark);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: grid;
+      gap: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .trust-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .trust-photos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+    }
+
+    .photo-placeholder {
+      background: linear-gradient(135deg, rgba(133, 187, 37, 0.3), rgba(29, 32, 41, 0.9));
+      border-radius: 16px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    blockquote {
+      margin: 0;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 24px;
+      border-radius: 16px;
+      border-left: 4px solid var(--primary);
+      font-style: italic;
+    }
+
+    footer {
+      background: #14161D;
+      color: var(--text-muted);
+      padding: 32px 20px 48px;
+      margin-top: auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .footer-title {
+      color: var(--text-light);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .footer-bottom {
+      margin-top: 24px;
+      font-size: 0.85rem;
+      text-align: center;
+      color: var(--neutral);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 768px) {
+      .hero-inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: center;
+      }
+
+      .finder-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .delivery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero {
+        padding: 56px 48px 80px;
+      }
+
+      .finder {
+        margin: -60px auto 64px;
+        width: min(100%, 980px);
+      }
+
+      section {
+        padding: 64px 48px;
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .delivery-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .hero-inner {
+        padding: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <header>
+      <div class="top-bar">
+        <span>💡 Sve na lageru u Hrvatskoj</span>
+        <span>•</span>
+        <span>🚚 Dostava 24–48h</span>
+        <span>•</span>
+        <span>📞 Poziv / WhatsApp</span>
+      </div>
+      <div class="hero" id="vrh">
+        <div class="hero-inner fade-up">
+          <div>
+            <div class="brand-tagline">
+              <div class="brand-logo">R</div>
+              <div>
+                <div style="font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--primary);">Ruralna</div>
+                <div style="font-weight:700; letter-spacing:0.3em; font-size:0.75rem; color:white;">MEHANIZACIJA</div>
+              </div>
+            </div>
+            <h1>Gume, OEM ulja i JD potrošni – odmah</h1>
+            <p>Ambra &amp; Akcela za NH/CASE, Ascenso i Torque gume, JD filteri – sve u skladištu.</p>
+            <div class="cta-group">
+              <a class="cta" href="#katalog">Pogledaj dostupno</a>
+              <a class="cta secondary" href="tel:+38513000000">Nazovi odmah</a>
+            </div>
+          </div>
+          <div class="stock-card">
+            <h3>Stanje skladišta</h3>
+            <div class="stock-list">
+              <div class="stock-item">
+                <span>Ambra Multi G 134</span>
+                <span class="stock-badge">Bez čekanja</span>
+              </div>
+              <div class="stock-item">
+                <span>Akcela Hy-Tran Ultraction</span>
+                <span class="stock-badge">Bez čekanja</span>
+              </div>
+              <div class="stock-item">
+                <span>Ascenso Agriculture</span>
+                <span class="stock-badge">Bez čekanja</span>
+              </div>
+              <div class="stock-item">
+                <span>JD original filteri</span>
+                <span class="stock-badge">Bez čekanja</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="finder fade-up">
+      <div class="tabs">
+        <button class="tab-button active" data-tab="tab-olja">OEM ulja NH/CASE</button>
+        <button class="tab-button" data-tab="tab-gume">Gume</button>
+        <button class="tab-button" data-tab="tab-filteri">JD filteri</button>
+      </div>
+      <div class="tab-content active" id="tab-olja">
+        <div class="finder-row">
+          <select>
+            <option>Odaberi program Ambra / Akcela</option>
+            <option>Ambra Multi G 134</option>
+            <option>Ambra Mastergold HSP 15W-40</option>
+            <option>Ambra Unitek</option>
+            <option>Ambra Unitek PLUS 10W-40</option>
+            <option>Akcela Hy-Tran Ultraction</option>
+            <option>Akcela No.1 Engine Oil 15W-40</option>
+            <option>Akcela Actifull OT</option>
+          </select>
+          <select>
+            <option>Tip (UTTO / motorno / antifriz)</option>
+            <option>UTTO / trans-hidraulično</option>
+            <option>Motorno ulje</option>
+            <option>Antifriz / rashladna tekućina</option>
+          </select>
+        </div>
+        <a class="cta" href="#katalog">Prikaži u skladištu</a>
+      </div>
+      <div class="tab-content" id="tab-gume">
+        <div class="finder-row">
+          <select>
+            <option>Odaberi brand</option>
+            <option>Ascenso</option>
+            <option>Torque</option>
+          </select>
+          <select>
+            <option>Segment</option>
+            <option>Poljoprivredne / šumarstvo</option>
+            <option>Industrijske / građevinske</option>
+            <option>Materijal handling</option>
+            <option>OTR</option>
+            <option>Putnička</option>
+            <option>4x4 / SUV</option>
+            <option>Dostavna / laka teretna</option>
+            <option>KAMION / autobus</option>
+          </select>
+        </div>
+        <a class="cta" href="#katalog">Prikaži u skladištu</a>
+      </div>
+      <div class="tab-content" id="tab-filteri">
+        <div class="finder-row">
+          <select>
+            <option>Vrsta filtera</option>
+            <option>Motorni zrak</option>
+            <option>Gorivo</option>
+            <option>Hidraulika</option>
+            <option>Kabina</option>
+          </select>
+          <select>
+            <option>Odaberi seriju stroja</option>
+            <option>John Deere 5R</option>
+            <option>John Deere 6M</option>
+            <option>John Deere 6R</option>
+            <option>John Deere Combines</option>
+          </select>
+        </div>
+        <a class="cta" href="#katalog">Prikaži u skladištu</a>
+      </div>
+    </section>
+
+    <section id="katalog" class="fade-up">
+      <h2 class="section-title">Katalog spreman za isporuku</h2>
+      <div class="catalog">
+        <div class="accordion">
+          <div class="accordion-header">
+            <span>Ambra (NH)</span>
+            <span>OEM / preporučeno od proizvođača</span>
+          </div>
+          <div class="accordion-body">
+            <div class="product-list">
+              <div class="product-card">
+                <div class="product-top">
+                  <div>
+                    <h3>Ambra Multi G 134</h3>
+                    <p class="chips">
+                      <span class="chip">UTTO / trans-hidraulično</span>
+                      <span class="chip">New Holland</span>
+                      <span class="chip">OEM</span>
+                    </p>
+                  </div>
+                  <span class="availability">Na skladištu</span>
+                </div>
+                <p>Originalna NH specifična formulacija za transmisiju i hidrauličke sustave – momentalno dostupno u svim pakiranjima.</p>
+                <a class="cta-link" href="mailto:prodaja@ruralna-mehanizacija.hr">Rezerviraj / zatraži ponudu</a>
+              </div>
+              <div class="product-card">
+                <div class="product-top">
+                  <div>
+                    <h3>Ambra Mastergold HSP 15W-40</h3>
+                    <p class="chips">
+                      <span class="chip">Motorno ulje</span>
+                      <span class="chip">New Holland</span>
+                      <span class="chip">OEM</span>
+                    </p>
+                  </div>
+                  <span class="availability">Na skladištu</span>
+                </div>
+                <p>Visoka zaštita za Tier 3/Tier 4 motore. Sve litre i bačve u našem skladištu u Hrvatskoj – bez čekanja.</p>
+                <a class="cta-link" href="mailto:prodaja@ruralna-mehanizacija.hr">Rezerviraj / zatraži ponudu</a>
+              </div>
+              <div class="product-card">
+                <div class="product-top">
+                  <div>
+                    <h3>Ambra Unitek &amp; Unitek PLUS 10W-40</h3>
+                    <p class="chips">
+                      <span class="chip">Synt. motorno</span>
+                      <span class="chip">NH traktori &amp; kombajni</span>
+                      <span class="chip">OEM</span>
+                    </p>
+                  </div>
+                  <span class="availability">Na skladištu</span>
+                </div>
+                <p>Full SAPS sintetička tehnologija za dulje intervale. Program za NH flote spreman za otpremu odmah.</p>
+                <a class="cta-link" href="mailto:prodaja@ruralna-mehanizacija.hr">Rezerviraj / zatraži ponudu</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            <span>Akcela (Case IH/CE)</span>
+            <span>OEM / preporučeno od proizvođača</span>
+          </div>
+          <div class="accordion-body">
+            <div class="product-list">
+              <div class="product-card">
+                <div class="product-top">
+                  <div>
+                    <h3>Akcela Hy-Tran Ultraction</h3>
+                    <p class="chips">
+                      <span class="chip">UTTO</span>
+                      <span class="chip">Case IH</span>
+                      <span class="chip">OEM</span>
+                    </p>
+                  </div>
+                  <span class="availability">Na skladištu</span>
+                </div>
+                <p>Originalna zaštita za Powershift mjenjače i mokre kočnice. Svi formati od 20L do 1000L odmah raspoloživi.</p>
+                <a class="cta-link" href="mailto:prodaja@ruralna-mehanizacija.hr">Rezerviraj / zatraži ponudu</a>
+              </div>
+              <div class="product-card">
+                <div class="product-top">
+                  <div>
+                    <h3>Akcela No.1 Engine Oil 15W-40</h3>
+                    <p class="chips">
+                      <span class="chip">Motorno ulje</span>
+                      <span class="chip">Case IH &amp; CE</span>
+                      <span class="chip">OEM</span>
+                    </p>
+                  </div>
+                  <span class="availability">Na skladištu</span>
+                </div>
+                <p>OEM zaštita za sve Case IH traktore i građevinske strojeve. Pakiranja prilagođena servisima i OPG-ovima.</p>
+                <a class="cta-link" href="mailto:prodaja@ruralna-mehanizacija.hr">Rezerviraj / zatraži ponudu</a>
+              </div>
+              <div class="product-card">
+                <div class="product-top">
+                  <div>
+                    <h3>Akcela Actifull OT</h3>
+                    <p class="chips">
+                      <span class="chip">Antifriz</span>
+                      <span class="chip">Case IH/CE</span>
+                      <span class="chip">OEM</span>
+                    </p>
+                  </div>
+                  <span class="availability">Na skladištu</span>
+                </div>
+                <p>Organski rashladni fluid s certificiranom zaštitom od korozije. Isporuka isti dan iz našeg skladišta.</p>
+                <a class="cta-link" href="mailto:prodaja@ruralna-mehanizacija.hr">Rezerviraj / zatraži ponudu</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            <span>Gume (Ascenso, Torque)</span>
+            <span>Agri, industrial, truck/bus</span>
+          </div>
+          <div class="accordion-body">
+            <div class="product-list">
+              <div class="product-card">
+                <div class="product-top">
+                  <div>
+                    <h3>Ascenso Agriculture &amp; Forestry</h3>
+                    <p class="chips">
+                      <span class="chip">Radial &amp; bias</span>
+                      <span class="chip">Traktori, kombajni</span>
+                      <span class="chip">Na skladištu HR</span>
+                    </p>
+                  </div>
+                  <span class="availability">Na skladištu</span>
+                </div>
+                <p>Najtraženije dimenzije 380/85R28, 480/80R42 i šumske 500/60-22.5 dostupne s isporukom u 24h.</p>
+                <a class="cta-link" href="mailto:prodaja@ruralna-mehanizacija.hr">Rezerviraj / zatraži ponudu</a>
+              </div>
+              <div class="product-card">
+                <div class="product-top">
+                  <div>
+                    <h3>Ascenso Industrial &amp; Construction</h3>
+                    <p class="chips">
+                      <span class="chip">Skid steer</span>
+                      <span class="chip">Telehandler</span>
+                      <span class="chip">OTR</span>
+                    </p>
+                  </div>
+                  <span class="availability">Na skladištu</span>
+                </div>
+                <p>JCB, Manitou, Bobcat specifikacije. Svi popularni uzorci uz mogućnost montaže na terenu.</p>
+                <a class="cta-link" href="mailto:prodaja@ruralna-mehanizacija.hr">Rezerviraj / zatraži ponudu</a>
+              </div>
+              <div class="product-card">
+                <div class="product-top">
+                  <div>
+                    <h3>Torque Truck &amp; Bus</h3>
+                    <p class="chips">
+                      <span class="chip">Steer / Drive / Trailer</span>
+                      <span class="chip">4x4 &amp; SUV</span>
+                      <span class="chip">Vozni park</span>
+                    </p>
+                  </div>
+                  <span class="availability">Na skladištu</span>
+                </div>
+                <p>Od putničkih i SUV dimenzija do kamionskih 315/80R22.5 – za male prijevoznike i servise bez čekanja.</p>
+                <a class="cta-link" href="mailto:prodaja@ruralna-mehanizacija.hr">Rezerviraj / zatraži ponudu</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            <span>JD original</span>
+            <span>Servisni paketi i filteri</span>
+          </div>
+          <div class="accordion-body">
+            <div class="product-list">
+              <div class="product-card">
+                <div class="product-top">
+                  <div>
+                    <h3>John Deere motorni filteri zraka</h3>
+                    <p class="chips">
+                      <span class="chip">Serije 5 &amp; 6</span>
+                      <span class="chip">Originalni dijelovi</span>
+                    </p>
+                  </div>
+                  <span class="availability">Na skladištu</span>
+                </div>
+                <p>OEM filter elementi i sigurnosni ulošci za 5R, 6M, 6R – odmah dostupni za hitne servise.</p>
+                <a class="cta-link" href="mailto:prodaja@ruralna-mehanizacija.hr">Rezerviraj / zatraži ponudu</a>
+              </div>
+              <div class="product-card">
+                <div class="product-top">
+                  <div>
+                    <h3>John Deere filteri goriva i hidraulike</h3>
+                    <p class="chips">
+                      <span class="chip">Kombajni &amp; traktori</span>
+                      <span class="chip">Originalni dijelovi</span>
+                    </p>
+                  </div>
+                  <span class="availability">Na skladištu</span>
+                </div>
+                <p>Kompletni kitovi sa separatorima vode i hidrauličkim ulošcima za maksimalnu dostupnost strojeva.</p>
+                <a class="cta-link" href="mailto:prodaja@ruralna-mehanizacija.hr">Rezerviraj / zatraži ponudu</a>
+              </div>
+              <div class="product-card">
+                <div class="product-top">
+                  <div>
+                    <h3>JD servisni paketi</h3>
+                    <p class="chips">
+                      <span class="chip">Komplet 500h / 1000h</span>
+                      <span class="chip">Originalni dijelovi</span>
+                    </p>
+                  </div>
+                  <span class="availability">Na skladištu</span>
+                </div>
+                <p>Setovi filtera i potrošnog materijala spremni za redovne servise. Preuzimanje osobno ili slanje isti dan.</p>
+                <a class="cta-link" href="mailto:prodaja@ruralna-mehanizacija.hr">Rezerviraj / zatraži ponudu</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-up">
+      <h2 class="section-title">Zašto kupiti kod nas danas</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="icon-circle">📦</div>
+          <h3>Sve na lageru</h3>
+          <p>Robu držimo u Hrvatskoj – bez čekanja na uvoz ili isporuke iz EU skladišta.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon-circle">🛢️</div>
+          <h3>OEM ulja za NH i CASE</h3>
+          <p>Ambra i Akcela program s oznakom “OEM / preporučeno od proizvođača”.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon-circle">🚜</div>
+          <h3>Agri + OTR gume</h3>
+          <p>Ascenso i Torque u svim segmentima – poljoprivreda, građevina, transport.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon-circle">🧰</div>
+          <h3>Originalni JD dijelovi</h3>
+          <p>John Deere filteri i setovi servisa – logistika za servise i OPG-ove.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-up">
+      <div class="brand-wall">
+        <h2 class="section-title" style="margin:0;">Zid brendova</h2>
+        <div class="brand-logos">
+          <div class="brand-logo-tile">PETRONAS</div>
+          <div class="brand-logo-tile">Ascenso</div>
+          <div class="brand-logo-tile">Torque</div>
+          <div class="brand-logo-tile">John Deere</div>
+        </div>
+        <p style="color:var(--text-muted); font-size:0.95rem;">Ako je proizvođač ovdje – imamo ga odmah.</p>
+      </div>
+    </section>
+
+    <section class="fade-up">
+      <h2 class="section-title">Dostava i plaćanje</h2>
+      <div class="delivery-grid">
+        <div class="delivery-card">
+          <h3>Dostava 24–48h</h3>
+          <p>Na cijeloj teritoriji Hrvatske uz provjerene prijevoznike.</p>
+        </div>
+        <div class="delivery-card">
+          <h3>Plaćanje pouzećem / predračun</h3>
+          <p>Fakturiramo odmah uz mogućnost plaćanja pri isporuci.</p>
+        </div>
+        <div class="delivery-card">
+          <h3>Preuzimanje u skladištu</h3>
+          <p>Osobno preuzimanje u našem skladištu kod Zagreba.</p>
+        </div>
+        <div class="delivery-card">
+          <h3>Izdajemo R1</h3>
+          <p>R1 računi za OPG-ove, servise i poduzeća.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-up">
+      <h2 class="section-title">Povjerenje i dokazi</h2>
+      <div class="trust-grid">
+        <div class="trust-photos">
+          <div class="photo-placeholder">Skladište ulja</div>
+          <div class="photo-placeholder">Regal guma</div>
+          <div class="photo-placeholder">JD filteri</div>
+        </div>
+        <blockquote>“Uz Ruralnu mehanizaciju, Ambra i Ascenso stignu isti tjedan. Nema stajanja strojeva.”<br><strong>OPG Horvat, Varaždin</strong></blockquote>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">Kontakt</div>
+          <p>📞 +385 1 3000 000<br>✉️ prodaja@ruralna-mehanizacija.hr</p>
+        </div>
+        <div>
+          <div class="footer-title">Adresa</div>
+          <p>Skladišna zona Zagreb istok<br>Rimska 12, Sesvete</p>
+        </div>
+        <div>
+          <div class="footer-title">Radno vrijeme</div>
+          <p>Pon–Pet: 07–17h<br>Subota: 08–13h</p>
+        </div>
+        <div>
+          <div class="footer-title">Društvene mreže</div>
+          <p><a href="#">Facebook</a> • <a href="#">Instagram</a> • <a href="#">LinkedIn</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2024 Ruralna mehanizacija. Sva prava pridržana.</div>
+    </footer>
+  </div>
+
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        button.classList.add('active');
+        document.getElementById(button.dataset.tab).classList.add('active');
+      });
+    });
+
+    const accordions = document.querySelectorAll('.accordion');
+    accordions.forEach(acc => {
+      const header = acc.querySelector('.accordion-header');
+      header.addEventListener('click', () => {
+        acc.classList.toggle('open');
+      });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
