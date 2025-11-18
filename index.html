@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ruralna Mehanizacija – službeni distributer New Holland guma i maziva u Hrvatskoj. Sve na zalihi, cijena na upit.">
+  <link rel="alternate" hreflang="hr" href="/hr">
+  <link rel="alternate" hreflang="en" href="/en">
+  <title>Ruralna Mehanizacija | Sve na zalihi – cijena na upit</title>
+  <!-- TODO: Insert Organization & LocalBusiness JSON-LD schema here. -->
+  <style>
+    :root {
+      --blue: #00146b;
+      --blue-alt: #003b7a;
+      --yellow: #ffdd00;
+      --yellow-strong: #f2e527;
+      --accent-blue: #22c2fc;
+      --accent-pink: #ea3a85;
+      --accent-pink-light: #f77b98;
+      --navy-text: #0a1028;
+      --gray: #f5f7fb;
+      --dark-gray: #333333;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--gray);
+      color: var(--navy-text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--blue-alt) 100%);
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      transition: transform 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+    }
+    header.compressed { padding: 6px 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.16); }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffeb65 0%, var(--yellow) 60%, #c8ad00 100%);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .logo-icon::after {
+      content: "";
+      width: 70%;
+      height: 70%;
+      border: 3px solid var(--blue);
+      border-radius: 50%;
+      border-left-color: transparent;
+      animation: spin 6s linear infinite;
+      transition: animation-duration 0.3s ease;
+    }
+    .logo-icon:hover::after { animation-duration: 3s; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: none;
+      gap: 12px;
+      align-items: center;
+    }
+    nav ul li a { color: var(--white); font-weight: 600; padding: 8px 10px; border-radius: 10px; }
+    nav ul li a:hover { background: rgba(255,255,255,0.12); }
+    .actions { display: flex; gap: 10px; align-items: center; }
+    .btn { border: none; cursor: pointer; border-radius: 16px; font-weight: 700; letter-spacing: 0.2px; }
+    .btn-primary { background: var(--yellow); color: var(--blue); padding: 10px 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.18); }
+    .btn-secondary { background: transparent; color: var(--white); padding: 9px 12px; border: 1.5px solid rgba(255,255,255,0.4); }
+    .btn-icon { display: inline-flex; align-items: center; gap: 8px; }
+    .icon-circle { width: 34px; height: 34px; border-radius: 50%; background: var(--yellow); color: var(--blue); display: grid; place-items: center; box-shadow: 0 8px 18px rgba(0,0,0,0.16); }
+    .hamburger { background: none; border: 1px solid rgba(255,255,255,0.4); color: var(--white); padding: 8px 10px; border-radius: 12px; font-size: 18px; }
+    .lang-toggle { background: rgba(255,255,255,0.12); color: var(--white); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); font-weight: 700; }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 10, 40, 0.92);
+      color: var(--white);
+      display: none;
+      flex-direction: column;
+      padding: 24px;
+      z-index: 998;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: var(--white); font-size: 18px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .mobile-menu .cta-stack { margin-top: auto; display: grid; gap: 12px; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, rgba(0,20,107,0.85), rgba(0,59,122,0.78)), url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: var(--white);
+      padding: 110px 18px 70px;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(255,221,0,0.12), transparent 40%);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; gap: 24px; position: relative; z-index: 1; }
+    .badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 10px 30px rgba(0,0,0,0.25); animation: fadeSlide 0.8s ease forwards; }
+    .badge strong { color: var(--yellow); }
+    @keyframes fadeSlide { from { opacity: 0; transform: translateY(-8px);} to { opacity:1; transform: translateY(0);} }
+    h1 { margin: 8px 0; font-size: 32px; line-height: 1.2; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+    .subheadline { font-size: 16px; max-width: 720px; color: rgba(255,255,255,0.92); }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
+    .microcopy { font-size: 14px; color: rgba(255,255,255,0.85); display: grid; gap: 6px; margin-top: 6px; }
+
+    .brand-carousel { background: rgba(255,255,255,0.08); padding: 12px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.2); }
+    .brand-card { display: grid; gap: 6px; }
+    .brand-card h3 { margin: 0; font-size: 16px; color: var(--yellow); }
+    .brand-card p { margin: 0; font-size: 14px; color: rgba(255,255,255,0.92); }
+    .brand-card .mini-cta { align-self: start; background: rgba(255,221,0,0.14); color: var(--white); padding: 8px 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.25); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+    .hero-visual { position: relative; min-height: 180px; border-radius: 18px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.35); }
+    .hero-visual::before { content:""; position: absolute; inset:0; background: linear-gradient(135deg, rgba(0,20,107,0.1), rgba(255,221,0,0.15)); }
+    .hero-visual img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.05); }
+
+    .ticker { background: var(--dark-gray); color: var(--yellow); padding: 10px 16px; display: flex; align-items: center; gap: 10px; overflow: hidden; }
+    .ticker span { font-weight: 700; }
+    .ticker .item { white-space: nowrap; animation: slideTicker 12s linear infinite; }
+    @keyframes slideTicker { from { transform: translateX(100%);} to { transform: translateX(-100%);} }
+
+    .stock { background: var(--yellow-strong); color: var(--blue); padding: 32px 16px; text-align: center; }
+    .stock h2 { margin: 0 0 8px; font-size: 24px; }
+    .stock p { margin: 0 0 16px; font-weight: 600; }
+    .stock .cta-row { justify-content: center; }
+
+    .section { padding: 48px 16px; }
+    .section h2 { margin: 0 0 12px; font-size: 26px; color: var(--blue); }
+    .section p.lead { color: #24304f; margin: 0 0 24px; }
+
+    .categories { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+    .category-card { background: var(--white); padding: 16px; border-radius: 14px; box-shadow: 0 14px 28px rgba(0,0,0,0.08); display: grid; gap: 10px; border: 1px solid #e6ebf5; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .category-card:hover { transform: translateY(-4px); box-shadow: 0 20px 36px rgba(0,0,0,0.12); }
+    .category-icon { width: 46px; height: 46px; border-radius: 12px; background: linear-gradient(145deg, var(--yellow), #ffe666); display: grid; place-items: center; color: var(--blue); font-weight: 800; }
+
+    .assortment { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .assort-card { background: var(--white); padding: 16px; border-radius: 16px; box-shadow: 0 14px 28px rgba(0,0,0,0.08); border: 1px solid #e6ebf5; display: grid; gap: 10px; position: relative; }
+    .assort-card .badge { background: rgba(255,221,0,0.16); color: var(--blue); border-color: rgba(0,20,107,0.12); }
+    .assort-card ul { padding-left: 18px; margin: 0; color: #2c3559; }
+    .assort-card .availability { font-weight: 700; color: var(--blue); }
+    .assort-card .cta-row { gap: 8px; }
+    .pulse { animation: pulse 5s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { transform: scale(1);} 50% { transform: scale(1.02);} }
+
+    .news-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .news-card { background: #efefef; border-radius: 14px; padding: 14px; display: grid; gap: 10px; color: #111827; box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
+    .news-card h3 { margin: 0; color: var(--blue); }
+    .news-card .date { color: #555; font-size: 13px; }
+
+    .partners { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); align-items: center; }
+    .partner-logo { background: var(--white); padding: 12px; border-radius: 12px; box-shadow: 0 12px 24px rgba(0,0,0,0.06); filter: grayscale(1); transition: filter 0.25s ease, transform 0.25s ease; text-align: center; }
+    .partner-logo:hover { filter: grayscale(0); transform: translateY(-3px); }
+
+    .form-card { background: var(--white); padding: 18px; border-radius: 16px; box-shadow: 0 16px 32px rgba(0,0,0,0.08); border: 1px solid #e6ebf5; display: grid; gap: 12px; }
+    .form-card input, .form-card select, .form-card textarea { width: 100%; padding: 12px; border: 1px solid #d7deea; border-radius: 12px; font-size: 15px; }
+    .form-card button { width: 100%; }
+
+    .contact-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .contact-card { background: var(--white); padding: 16px; border-radius: 14px; box-shadow: 0 12px 24px rgba(0,0,0,0.08); border: 1px solid #e6ebf5; }
+
+    footer { background: #0b1230; color: var(--white); padding: 24px 16px; }
+    footer .footer-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    footer a { color: var(--yellow); }
+
+    .sticky-cta { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); display: none; gap: 10px; z-index: 997; }
+    .sticky-cta button { padding: 12px 14px; border-radius: 14px; box-shadow: 0 14px 30px rgba(0,0,0,0.22); }
+
+    @media (min-width: 768px) {
+      nav ul { display: flex; }
+      .hamburger { display: none; }
+      .hero { padding: 140px 32px 120px; }
+      .hero-grid { grid-template-columns: repeat(2, minmax(0,1fr)); align-items: center; }
+      h1 { font-size: 42px; }
+      .cta-row { gap: 16px; }
+    }
+    @media (min-width: 1024px) {
+      .hero { padding: 160px 48px 140px; }
+      h1 { font-size: 48px; }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="nav">
+      <div class="brand">
+        <div class="logo-icon" aria-hidden="true"></div>
+        <div>
+          <div>Ruralna Mehanizacija</div>
+          <small style="opacity:0.8;">Službeni NH distributer</small>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#hero" data-lang="hr">Početna</a><a href="#hero" data-lang="en" style="display:none;">Home</a></li>
+          <li><a href="#assortment" data-lang="hr">Proizvodi</a><a href="#assortment" data-lang="en" style="display:none;">Products</a></li>
+          <li><a href="#news" data-lang="hr">Novosti</a><a href="#news" data-lang="en" style="display:none;">News</a></li>
+          <li><a href="#contact" data-lang="hr">Kontakt</a><a href="#contact" data-lang="en" style="display:none;">Contact</a></li>
+          <li><a href="#service" data-lang="hr">Servis uskoro</a><a href="#service" data-lang="en" style="display:none;">Service coming soon</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <a class="btn btn-secondary btn-icon" data-track="header-call" href="tel:+385913599181"><span class="icon-circle">📞</span><span data-lang="hr">Zovite nas</span><span data-lang="en" style="display:none;">Call us</span></a>
+        <a class="btn btn-primary btn-icon" data-track="header-whatsapp" href="https://wa.me/385913599181?text=Pozdrav%2C%20zanima%20me%20ponuda" target="_blank" rel="noopener"><span class="icon-circle" style="background: #25D366; color: #fff;">💬</span><span data-lang="hr">WhatsApp poruka</span><span data-lang="en" style="display:none;">WhatsApp us</span></a>
+        <button class="lang-toggle" id="langToggle">HR / EN</button>
+        <button class="hamburger" id="hamburger">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#hero" data-lang="hr">Početna</a><a href="#hero" data-lang="en" style="display:none;">Home</a>
+    <a href="#assortment" data-lang="hr">Proizvodi</a><a href="#assortment" data-lang="en" style="display:none;">Products</a>
+    <a href="#news" data-lang="hr">Novosti</a><a href="#news" data-lang="en" style="display:none;">News</a>
+    <a href="#contact" data-lang="hr">Kontakt</a><a href="#contact" data-lang="en" style="display:none;">Contact</a>
+    <a href="#service" data-lang="hr">Servis uskoro</a><a href="#service" data-lang="en" style="display:none;">Service coming soon</a>
+    <div class="cta-stack">
+      <a class="btn btn-primary btn-icon" data-track="menu-whatsapp" href="https://wa.me/385913599181?text=Pozdrav%2C%20zanima%20me%20ponuda" target="_blank" rel="noopener"><span class="icon-circle" style="background:#25D366;color:#fff;">💬</span><span data-lang="hr">WhatsApp</span><span data-lang="en" style="display:none;">WhatsApp</span></a>
+      <a class="btn btn-secondary btn-icon" data-track="menu-call" href="tel:+385913599181"><span class="icon-circle">📞</span><span data-lang="hr">Nazovite</span><span data-lang="en" style="display:none;">Call</span></a>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="badge" aria-live="polite">
+            <span>⚡</span>
+            <span data-lang="hr"><strong>Ruralna Mehanizacija</strong> – službeni distributer New Holland za Hrvatsku</span>
+            <span data-lang="en" style="display:none;"><strong>Ruralna Mehanizacija</strong> – official New Holland distributor for Croatia</span>
+          </div>
+          <h1 data-lang="hr">Vaš partner za snažniju žetvu.</h1>
+          <h1 data-lang="en" style="display:none;">Your partner for a stronger harvest.</h1>
+          <p class="subheadline" data-lang="hr">Ruralna Mehanizacija – službeni distributer New Holland guma i maziva u Hrvatskoj. Sve na zalihi, cijena na upit.</p>
+          <p class="subheadline" data-lang="en" style="display:none;">Ruralna Mehanizacija – official New Holland distributor for tires and lubricants in Croatia. Everything in stock, price on request.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary btn-icon" href="#assortment" data-track="hero-browse"><span>⬇</span><span data-lang="hr">Istražite proizvode</span><span data-lang="en" style="display:none;">Browse products</span></a>
+            <a class="btn btn-secondary btn-icon" href="https://wa.me/385913599181?text=Pozdrav%2C%20zanima%20me%20ponuda" data-track="hero-whatsapp" target="_blank" rel="noopener"><span class="icon-circle" style="background:#25D366;color:#fff;">💬</span><span>WhatsApp</span></a>
+            <a class="btn btn-secondary btn-icon" href="tel:+385913599181" data-track="hero-call"><span class="icon-circle">📞</span><span data-lang="hr">Nazovite</span><span data-lang="en" style="display:none;">Call</span></a>
+          </div>
+          <div class="microcopy">
+            <span data-lang="hr">98% isporuka u roku 24h. Sve na zalihi – cijena na upit.</span>
+            <span data-lang="en" style="display:none;">98% of orders delivered within 24h. Everything in stock – price on request.</span>
+          </div>
+          <div class="brand-carousel" id="brandCarousel" aria-live="polite"></div>
+        </div>
+        <div class="hero-visual" id="heroVisual">
+          <img src="https://images.unsplash.com/photo-1524481905007-ea072534b820?auto=format&fit=crop&w=1200&q=80" alt="New Holland tractor tire on a field" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" id="ticker">
+      <span>📰</span>
+      <div class="item" id="tickerItem">New Ascenso tire arrivals – scroll for more</div>
+    </div>
+
+    <section class="stock" id="stock">
+      <h2 data-lang="hr">Sve je na zalihi! Ne čekaj!</h2>
+      <h2 data-lang="en" style="display:none;">Everything in stock! Don’t wait!</h2>
+      <p data-lang="hr">Vaš posao ne smije stajati. Nazovite ili pošaljite WhatsApp i dobivate brzu potvrdu i isporuku.</p>
+      <p data-lang="en" style="display:none;">Your business can’t wait. Call us or send WhatsApp for fast confirmation and delivery.</p>
+      <div class="cta-row">
+        <a class="btn btn-secondary btn-icon" href="tel:+385913599181" data-track="stock-call"><span class="icon-circle">📞</span><span data-lang="hr">Nazovite za cijenu</span><span data-lang="en" style="display:none;">Call for price</span></a>
+        <a class="btn btn-primary btn-icon" href="https://wa.me/385913599181?text=Zanima%20me%20cijena" target="_blank" rel="noopener" data-track="stock-whatsapp"><span class="icon-circle" style="background:#25D366;color:#fff;">💬</span><span data-lang="hr">WhatsApp upit</span><span data-lang="en" style="display:none;">WhatsApp inquiry</span></a>
+      </div>
+    </section>
+
+    <section class="section" id="categories">
+      <h2 data-lang="hr">Kategorije</h2>
+      <h2 data-lang="en" style="display:none;">Categories</h2>
+      <p class="lead" data-lang="hr">Jedan dodir do pravog proizvoda – svaki blok je klikabilan.</p>
+      <p class="lead" data-lang="en" style="display:none;">One tap to the right product – each block is fully clickable.</p>
+      <div class="categories">
+        <a class="category-card" href="#assortment" data-track="category-tires">
+          <div class="category-icon">🛞</div>
+          <div>
+            <strong data-lang="hr">Gume i felge</strong><strong data-lang="en" style="display:none;">Tires & rims</strong>
+            <p data-lang="hr">Maksimalna trakcija i trajnost za polje.</p>
+            <p data-lang="en" style="display:none;">Maximum traction and durability for the field.</p>
+          </div>
+          <span class="mini-cta" aria-hidden="true">→</span>
+        </a>
+        <a class="category-card" href="#assortment" data-track="category-oils">
+          <div class="category-icon">💧</div>
+          <div>
+            <strong data-lang="hr">Maziva i tekućine</strong><strong data-lang="en" style="display:none;">Oils & fluids</strong>
+            <p data-lang="hr">Zaštita i puni radni vijek motora.</p>
+            <p data-lang="en" style="display:none;">Protection and full engine life.</p>
+          </div>
+          <span class="mini-cta" aria-hidden="true">→</span>
+        </a>
+        <a class="category-card" href="#assortment" data-track="category-parts">
+          <div class="category-icon">⚙️</div>
+          <div>
+            <strong data-lang="hr">Rezervni dijelovi</strong><strong data-lang="en" style="display:none;">Spare parts</strong>
+            <p data-lang="hr">Originalna pouzdanost, bez kompromisa.</p>
+            <p data-lang="en" style="display:none;">Original reliability without compromise.</p>
+          </div>
+          <span class="mini-cta" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="assortment">
+      <h2 data-lang="hr">Asortiman brendova</h2>
+      <h2 data-lang="en" style="display:none;">Brand assortment</h2>
+      <p class="lead" data-lang="hr">Sve na zalihi – cijena na upit. Odaberite brend i pošaljite WhatsApp poruku ili nazovite.</p>
+      <p class="lead" data-lang="en" style="display:none;">Everything in stock – price on request. Pick a brand and send a WhatsApp or call.</p>
+      <div class="assortment">
+        <article class="assort-card">
+          <div class="badge">New Holland</div>
+          <h3>New Holland – original parts</h3>
+          <ul>
+            <li data-lang="hr">Originalni dijelovi i servisni setovi za sve modele.</li>
+            <li data-lang="hr">Službena podrška i kompatibilnost.</li>
+            <li data-lang="en" style="display:none;">Original parts and service kits for all models.</li>
+            <li data-lang="en" style="display:none;">Official support and full compatibility.</li>
+          </ul>
+          <div class="availability" data-lang="hr">Na zalihi – cijena na upit</div>
+          <div class="availability" data-lang="en" style="display:none;">In stock – price on request</div>
+          <div class="cta-row">
+            <a class="btn btn-primary btn-icon pulse" data-track="assort-whatsapp" href="https://wa.me/385913599181?text=Zanima%20me%20New%20Holland%20dio" target="_blank" rel="noopener"><span class="icon-circle" style="background:#25D366;color:#fff;">💬</span><span data-lang="hr">WhatsApp upit za New Holland</span><span data-lang="en" style="display:none;">New Holland WhatsApp inquiry</span></a>
+            <a class="btn btn-secondary btn-icon" data-track="assort-call" href="tel:+385913599181"><span class="icon-circle">📞</span><span data-lang="hr">Nazovite za cijenu</span><span data-lang="en" style="display:none;">Call for price</span></a>
+          </div>
+        </article>
+        <article class="assort-card">
+          <div class="badge">Torque</div>
+          <h3>Torque – agro gume</h3>
+          <ul>
+            <li data-lang="hr">Robusne poljoprivredne gume, odličan omjer cijene i kvalitete.</li>
+            <li data-lang="hr">Brza isporuka svih dimenzija.</li>
+            <li data-lang="en" style="display:none;">Robust agricultural tires with great price/performance.</li>
+            <li data-lang="en" style="display:none;">Fast delivery on all sizes.</li>
+          </ul>
+          <div class="availability" data-lang="hr">Na zalihi – cijena na upit</div>
+          <div class="availability" data-lang="en" style="display:none;">In stock – price on request</div>
+          <div class="cta-row">
+            <a class="btn btn-primary btn-icon pulse" data-track="assort-whatsapp" href="https://wa.me/385913599181?text=Zanima%20me%20Torque%20guma" target="_blank" rel="noopener"><span class="icon-circle" style="background:#25D366;color:#fff;">💬</span><span data-lang="hr">WhatsApp upit za Torque</span><span data-lang="en" style="display:none;">Torque WhatsApp inquiry</span></a>
+            <a class="btn btn-secondary btn-icon" data-track="assort-call" href="tel:+385913599181"><span class="icon-circle">📞</span><span data-lang="hr">Nazovite za cijenu</span><span data-lang="en" style="display:none;">Call for price</span></a>
+          </div>
+        </article>
+        <article class="assort-card">
+          <div class="badge">Ascenso</div>
+          <h3>Ascenso – agro gume</h3>
+          <ul>
+            <li data-lang="hr">Premium trakcija i trajnost za zahtjevne terene.</li>
+            <li data-lang="hr">Sve dimenzije dostupne odmah.</li>
+            <li data-lang="en" style="display:none;">Premium traction and durability for demanding fields.</li>
+            <li data-lang="en" style="display:none;">All sizes available now.</li>
+          </ul>
+          <div class="availability" data-lang="hr">Na zalihi – cijena na upit</div>
+          <div class="availability" data-lang="en" style="display:none;">In stock – price on request</div>
+          <div class="cta-row">
+            <a class="btn btn-primary btn-icon pulse" data-track="assort-whatsapp" href="https://wa.me/385913599181?text=Zanima%20me%20Ascenso%20guma" target="_blank" rel="noopener"><span class="icon-circle" style="background:#25D366;color:#fff;">💬</span><span data-lang="hr">WhatsApp upit za Ascenso</span><span data-lang="en" style="display:none;">Ascenso WhatsApp inquiry</span></a>
+            <a class="btn btn-secondary btn-icon" data-track="assort-call" href="tel:+385913599181"><span class="icon-circle">📞</span><span data-lang="hr">Nazovite za cijenu</span><span data-lang="en" style="display:none;">Call for price</span></a>
+          </div>
+        </article>
+        <article class="assort-card">
+          <div class="badge">Petronas Ambra</div>
+          <h3>Petronas Ambra – NH maziva</h3>
+          <ul>
+            <li data-lang="hr">Jedina linija ulja službeno odobrena i preporučena od New Holland.</li>
+            <li data-lang="hr">Razvijena s CNH Industrial za maksimalnu kompatibilnost.</li>
+            <li data-lang="en" style="display:none;">Only oil line officially approved and recommended by New Holland.</li>
+            <li data-lang="en" style="display:none;">Created with CNH Industrial for maximum compatibility.</li>
+          </ul>
+          <div class="availability" data-lang="hr">Na zalihi – cijena na upit</div>
+          <div class="availability" data-lang="en" style="display:none;">In stock – price on request</div>
+          <div class="cta-row">
+            <a class="btn btn-primary btn-icon pulse" data-track="assort-whatsapp" href="https://wa.me/385913599181?text=Zanima%20me%20Petronas%20Ambra%20ulje" target="_blank" rel="noopener"><span class="icon-circle" style="background:#25D366;color:#fff;">💬</span><span data-lang="hr">WhatsApp upit za Ambra</span><span data-lang="en" style="display:none;">Ambra WhatsApp inquiry</span></a>
+            <a class="btn btn-secondary btn-icon" data-track="assort-call" href="tel:+385913599181"><span class="icon-circle">📞</span><span data-lang="hr">Nazovite za cijenu</span><span data-lang="en" style="display:none;">Call for price</span></a>
+          </div>
+        </article>
+        <article class="assort-card">
+          <div class="badge">Petronas Akcela</div>
+          <h3>Petronas Akcela – CASE IH & CE</h3>
+          <ul>
+            <li data-lang="hr">Razvijena za CASE IH i CASE Construction Equipment.</li>
+            <li data-lang="hr">Odobrena i preporučena kao službeni lubrikant, kompatibilna s DPF, SCR, HI eSCR2 sustavima.</li>
+            <li data-lang="en" style="display:none;">Developed for CASE IH and CASE Construction Equipment.</li>
+            <li data-lang="en" style="display:none;">Officially approved lubricant, compatible with DPF, SCR, HI eSCR2.</li>
+          </ul>
+          <div class="availability" data-lang="hr">Na zalihi – cijena na upit</div>
+          <div class="availability" data-lang="en" style="display:none;">In stock – price on request</div>
+          <div class="cta-row">
+            <a class="btn btn-primary btn-icon pulse" data-track="assort-whatsapp" href="https://wa.me/385913599181?text=Zanima%20me%20Petronas%20Akcela%20ulje" target="_blank" rel="noopener"><span class="icon-circle" style="background:#25D366;color:#fff;">💬</span><span data-lang="hr">WhatsApp upit za Akcela</span><span data-lang="en" style="display:none;">Akcela WhatsApp inquiry</span></a>
+            <a class="btn btn-secondary btn-icon" data-track="assort-call" href="tel:+385913599181"><span class="icon-circle">📞</span><span data-lang="hr">Nazovite za cijenu</span><span data-lang="en" style="display:none;">Call for price</span></a>
+          </div>
+        </article>
+        <article class="assort-card">
+          <div class="badge">John Deere</div>
+          <h3>John Deere – original parts</h3>
+          <ul>
+            <li data-lang="hr">Originalni rezervni dijelovi za najbolju pouzdanost.</li>
+            <li data-lang="hr">Preporučeni za savršeno pristajanje i dug vijek.</li>
+            <li data-lang="en" style="display:none;">Original spare parts for top reliability.</li>
+            <li data-lang="en" style="display:none;">Recommended for perfect fit and long life.</li>
+          </ul>
+          <div class="availability" data-lang="hr">Na zalihi – cijena na upit</div>
+          <div class="availability" data-lang="en" style="display:none;">In stock – price on request</div>
+          <div class="cta-row">
+            <a class="btn btn-primary btn-icon pulse" data-track="assort-whatsapp" href="https://wa.me/385913599181?text=Zanima%20me%20John%20Deere%20dio" target="_blank" rel="noopener"><span class="icon-circle" style="background:#25D366;color:#fff;">💬</span><span data-lang="hr">WhatsApp upit za John Deere</span><span data-lang="en" style="display:none;">John Deere WhatsApp inquiry</span></a>
+            <a class="btn btn-secondary btn-icon" data-track="assort-call" href="tel:+385913599181"><span class="icon-circle">📞</span><span data-lang="hr">Nazovite za cijenu</span><span data-lang="en" style="display:none;">Call for price</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="partners">
+      <h2 data-lang="hr">Partneri kojima vjerujemo</h2>
+      <h2 data-lang="en" style="display:none;">Partners we trust</h2>
+      <p class="lead" data-lang="hr">Službeni i provjereni brendovi, uz stalnu dostupnost.</p>
+      <p class="lead" data-lang="en" style="display:none;">Official, trusted brands with constant availability.</p>
+      <div class="partners">
+        <div class="partner-logo">New Holland</div>
+        <div class="partner-logo">Torque</div>
+        <div class="partner-logo">Ascenso</div>
+        <div class="partner-logo">Petronas Ambra</div>
+        <div class="partner-logo">Petronas Akcela</div>
+        <div class="partner-logo">John Deere</div>
+      </div>
+    </section>
+
+    <section class="section" id="news">
+      <h2 data-lang="hr">Novosti</h2>
+      <h2 data-lang="en" style="display:none;">News</h2>
+      <p class="lead" data-lang="hr">Brze objave i novosti iz asortimana.</p>
+      <p class="lead" data-lang="en" style="display:none;">Quick announcements and product arrivals.</p>
+      <div class="news-grid">
+        <article class="news-card">
+          <div class="date">03.02.2025</div>
+          <h3 data-lang="hr">Nove Ascenso gume u dolasku</h3>
+          <h3 data-lang="en" style="display:none;">New Ascenso tires incoming</h3>
+          <p data-lang="hr">Proširili smo ponudu premium dimenzija za zahtjevne terene.</p>
+          <p data-lang="en" style="display:none;">Expanded premium sizes for demanding fields.</p>
+          <a href="#" class="mini-cta" data-track="news-read">Pročitaj više</a>
+        </article>
+        <article class="news-card">
+          <div class="date">27.01.2025</div>
+          <h3 data-lang="hr">Petronas Akcela – službeno odobreno ulje</h3>
+          <h3 data-lang="en" style="display:none;">Petronas Akcela – officially approved</h3>
+          <p data-lang="hr">Kompatibilno s DPF, SCR i HI eSCR2 sustavima CASE strojeva.</p>
+          <p data-lang="en" style="display:none;">Compatible with DPF, SCR and HI eSCR2 systems for CASE machines.</p>
+          <a href="#" class="mini-cta" data-track="news-read">Pročitaj više</a>
+        </article>
+        <article class="news-card">
+          <div class="date">12.01.2025</div>
+          <h3 data-lang="hr">Originalni John Deere dijelovi</h3>
+          <h3 data-lang="en" style="display:none;">Original John Deere parts</h3>
+          <p data-lang="hr">Za najbolju pouzdanost i dug vijek – dostupno odmah.</p>
+          <p data-lang="en" style="display:none;">For best reliability and long life – available now.</p>
+          <a href="#" class="mini-cta" data-track="news-read">Pročitaj više</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="service">
+      <h2 data-lang="hr">Servis traktora – uskoro</h2>
+      <h2 data-lang="en" style="display:none;">Tractor service – coming soon</h2>
+      <p class="lead" data-lang="hr">Pripremamo terenski servis i tehničku podršku. Ostavite podatke i obavijestit ćemo vas.</p>
+      <p class="lead" data-lang="en" style="display:none;">Field service and technical support are in preparation. Leave details and we’ll notify you.</p>
+      <div class="form-card">
+        <input type="text" placeholder="Ime / tvrtka / OPG" aria-label="Ime" data-track="service-name">
+        <input type="tel" placeholder="Telefon" aria-label="Telefon" data-track="service-phone">
+        <select aria-label="Jezik" data-track="service-language">
+          <option value="hr">HR</option>
+          <option value="en">EN</option>
+        </select>
+        <button class="btn btn-primary" data-track="service-submit" type="button"><span data-lang="hr">Obavijestite me kada servis krene</span><span data-lang="en" style="display:none;">Notify me when service launches</span></button>
+        <small data-lang="hr">Servis je u pripremi – ne primamo trenutne servisne zahtjeve.</small>
+        <small data-lang="en" style="display:none;">Service is in preparation – no active service requests yet.</small>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2 data-lang="hr">Kontakt</h2>
+      <h2 data-lang="en" style="display:none;">Contact</h2>
+      <p class="lead" data-lang="hr">Sve na zalihi – cijena na upit. Nazovite ili pošaljite WhatsApp za brzi odgovor.</p>
+      <p class="lead" data-lang="en" style="display:none;">Everything in stock – price on request. Call or WhatsApp for a fast response.</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Telefon</h3>
+          <p><a href="tel:+385913599181" data-track="contact-call">+385 91 3599 181</a></p>
+          <p><a href="tel:+385916395798" data-track="contact-call">+385 91 6395 798</a></p>
+          <p><a href="tel:+385916395803" data-track="contact-call">+385 91 6395 803</a></p>
+          <p data-lang="hr">Radno vrijeme: 8:00 – 17:00 (Pon–Pet)</p>
+          <p data-lang="en" style="display:none;">Working hours: 8:00 – 17:00 (Mon–Fri)</p>
+        </div>
+        <div class="contact-card">
+          <h3>Email</h3>
+          <p><a href="mailto:prodaja@ruralnamehanizacija.hr">prodaja@ruralnamehanizacija.hr</a> (Prodaja / Sales)</p>
+          <p><a href="mailto:dijelovi@ruralnamehanizacija.hr">dijelovi@ruralnamehanizacija.hr</a> (Dijelovi / Parts)</p>
+          <p><a href="https://wa.me/385913599181?text=Pozdrav%2C%20trebam%20ponudu" data-track="contact-whatsapp" target="_blank" rel="noopener">WhatsApp</a></p>
+        </div>
+        <div class="contact-card">
+          <h3 data-lang="hr">Brzi upit</h3>
+          <h3 data-lang="en" style="display:none;">Quick inquiry</h3>
+          <textarea rows="4" placeholder="Napišite model stroja i potreban dio" aria-label="Upit" data-track="contact-message"></textarea>
+          <button class="btn btn-primary" data-track="contact-submit" type="button"><span data-lang="hr">Pošaljite</span><span data-lang="en" style="display:none;">Send</span></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="sticky-cta" id="stickyCta">
+    <a class="btn btn-primary btn-icon" href="https://wa.me/385913599181?text=Pozdrav%2C%20zanima%20me%20ponuda" target="_blank" rel="noopener" data-track="sticky-whatsapp"><span class="icon-circle" style="background:#25D366;color:#fff;">💬</span><span>WhatsApp</span></a>
+    <a class="btn btn-secondary btn-icon" href="tel:+385913599181" data-track="sticky-call"><span class="icon-circle">📞</span><span data-lang="hr">Nazovite</span><span data-lang="en" style="display:none;">Call</span></a>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <strong>Ruralna Mehanizacija</strong>
+        <p data-lang="hr">Službeni New Holland distributer za Hrvatsku.</p>
+        <p data-lang="en" style="display:none;">Official New Holland distributor for Croatia.</p>
+      </div>
+      <div>
+        <p><a href="#">Pravila privatnosti</a> · <a href="#">Uvjeti korištenja</a></p>
+      </div>
+      <div>
+        <p>Facebook · Instagram · LinkedIn · YouTube</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const tickerItems = [
+      { hr: "Nove Ascenso gume – sve dimenzije dostupne!", en: "New Ascenso tires – all sizes ready!" },
+      { hr: "Petronas Akcela: službeno ulje za CASE IH i CE", en: "Petronas Akcela: official oil for CASE IH & CE" },
+      { hr: "98% isporuka u 24h – sve na zalihi", en: "98% deliveries within 24h – everything in stock" }
+    ];
+    const carouselItems = [
+      { title: "New Holland", desc: "Original dijelovi i podrška." },
+      { title: "Torque", desc: "Robusne agro gume, odličan omjer." },
+      { title: "Ascenso", desc: "Premium trakcija za teške uvjete." },
+      { title: "Petronas Ambra", desc: "Jedina linija ulja odobrena od NH." },
+      { title: "Petronas Akcela", desc: "Za CASE IH i CE, DPF/SCR spremno." },
+      { title: "John Deere", desc: "Originalni dijelovi za pouzdanost." }
+    ];
+    const brandCarousel = document.getElementById('brandCarousel');
+    const tickerItemEl = document.getElementById('tickerItem');
+    let tickerIndex = 0;
+    let carouselIndex = 0;
+
+    function renderCarousel() {
+      const item = carouselItems[carouselIndex];
+      brandCarousel.innerHTML = `<div class="brand-card"><h3>${item.title}</h3><p>${item.desc}</p><span class="mini-cta">→ <span data-lang="hr">Vidi ponudu</span><span data-lang="en" style="display:none;">View brand</span></span></div>`;
+    }
+    function nextCarousel() {
+      carouselIndex = (carouselIndex + 1) % carouselItems.length;
+      renderCarousel();
+    }
+    function nextTicker() {
+      tickerIndex = (tickerIndex + 1) % tickerItems.length;
+      const lang = document.documentElement.lang === 'en' ? 'en' : 'hr';
+      tickerItemEl.textContent = tickerItems[tickerIndex][lang];
+    }
+    function setTickerInitial() {
+      const lang = document.documentElement.lang === 'en' ? 'en' : 'hr';
+      tickerItemEl.textContent = tickerItems[tickerIndex][lang];
+    }
+
+    renderCarousel();
+    setTickerInitial();
+    setInterval(nextCarousel, 5000);
+    setInterval(nextTicker, 4000);
+
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) header.classList.add('compressed'); else header.classList.remove('compressed');
+      const sticky = document.getElementById('stickyCta');
+      if (window.scrollY > 500) sticky.style.display = 'flex'; else sticky.style.display = 'none';
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+    const langToggle = document.getElementById('langToggle');
+    langToggle.addEventListener('click', () => {
+      const isEn = document.documentElement.lang === 'en';
+      document.documentElement.lang = isEn ? 'hr' : 'en';
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        const target = el.getAttribute('data-lang');
+        el.style.display = ((target === 'en') === !isEn) ? '' : 'none';
+      });
+      tickerIndex = 0; nextTicker();
+    });
+
+    const hero = document.querySelector('.hero');
+    window.addEventListener('scroll', () => {
+      const offset = window.scrollY * 0.2;
+      hero.style.backgroundPosition = `center ${offset}px`;
+    });
+
+    // TODO: Insert Google Tag Manager / Analytics scripts here.
+  </script>
+</body>
+</html>

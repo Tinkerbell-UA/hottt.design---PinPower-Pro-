@@ -101,3 +101,34 @@ For any questions or support, feel free to contact us at:
 This **README** template should provide a solid foundation for your **PinPower Pro** repository. You can customize sections based on the exact features and technologies used in your project.
 
 Let me know if you need further adjustments!
+
+---
+
+## Hero Section Copy (Ruralna Mehanizacija)
+
+**H1 — VAŠ PARTNER ZA SNAŽNIJU ŽETVU**  
+Set in crisp white (`#FFFFFF`) with the subtle navy drop shadow (`#173050`) outlined in the design brief to ensure clarity against the immersive NH tires hero visual.
+
+**Subheadline (H2)**  
+"Uz premium NH gume, servis na terenu i stalnu podršku, svaka vaša kampanja žetve postaje sigurnija, učinkovitija i profitabilnija."
+
+**Supporting Microcopy**  
+- "Ekskluzivna distribucija NH guma za Bosnu i Hercegovinu i okruženje."
+- "Logistika u 24h — isporuka direktno na vaše polje ili servisni centar."
+- "Stručni agronomi i mehaničari dostupni za telefonsku ili WhatsApp konzultaciju."
+
+**Primary CTA Button**  
+Label: **ISTRAŽITE PROIZVODE** (Rural Gold background `#FBB03B`, navy text `#173050`).  
+Hover Microcopy: "Saznajte koje dimenzije i profili su odmah spremni za isporuku."
+
+**Secondary Contact Hooks (Header Icons)**  
+- **Telefon:** "Pozovite nas za hitne narudžbe i savjete prije kupovine."  
+- **WhatsApp:** "Pošaljite fotografiju stroja — preporučujemo savršenu gumu u minuti."
+
+**Authority Ribbon**  
+Scrolling message: **SLUŽBENA DISTRIBUCIJA!** followed by "Originalna NH garancija i pratnja montaže u cijeloj regiji." (Dark gray `#333333` background, Rural Gold text `#FBB03B`).
+
+**Urgency Callout (Hero Overlay Tag)**  
+"SVE DIMENZIJE NA ZALIHI — bez čekanja, bez kompromisa." (Rural Gold capsule, navy text.)
+
+This copy aligns with the modern micro-interactions and color palette described in the UX brief, ensuring that messaging, hierarchy, and calls-to-action are ready for immediate implementation.
