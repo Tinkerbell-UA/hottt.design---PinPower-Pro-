@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sinotruk x Technotorg | Official UKRAINE Partner</title>
+  <style>
+    :root {
+      --red: #d01e43;
+      --dark: #0b0d14;
+      --light: #f5f7fb;
+      --gold: #f6c343;
+      --green: #38b267;
+      --shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12), transparent 35%),
+                  radial-gradient(circle at 80% 0%, rgba(208,30,67,0.18), transparent 40%),
+                  #0c111a;
+      color: #e8ecf3;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 13, 20, 0.78);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .brand img { height: 42px; }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+    .nav-links a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .cta-btn {
+      background: linear-gradient(120deg, var(--red), #fe654f);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      border: none;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .cta-btn:hover { transform: translateY(-2px) scale(1.01); box-shadow: 0 20px 55px rgba(208, 30, 67, 0.35); }
+    .burger { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+    .burger span { width: 26px; height: 2px; background: #fff; transition: transform 0.3s ease, opacity 0.3s ease; }
+
+    main { padding-top: 90px; }
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 120px;
+    }
+    .hero-copy h1 {
+      font-size: clamp(32px, 5vw, 58px);
+      margin: 0 0 12px;
+      line-height: 1.05;
+    }
+    .hero-copy .accent { color: var(--gold); font-weight: 800; }
+    .hero-copy p { max-width: 520px; font-size: 17px; opacity: 0.8; }
+    .hero-meta { display: flex; gap: 14px; flex-wrap: wrap; margin: 18px 0; }
+    .pill { background: rgba(255,255,255,0.08); padding: 8px 14px; border-radius: 999px; font-weight: 700; }
+    .logo-stack { display: flex; gap: 14px; align-items: center; margin-top: 16px; }
+    .logo-stack svg { height: 48px; }
+
+    .slider {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.08);
+      min-height: 360px;
+      background: #0f1624;
+      isolation: isolate;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 0.9s ease, transform 12s ease;
+    }
+    .slide.active { opacity: 1; transform: scale(1); }
+    .slider::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.65) 100%);
+      pointer-events: none;
+    }
+    .slider-caption {
+      position: absolute;
+      bottom: 20px; left: 20px;
+      z-index: 2;
+      background: rgba(0,0,0,0.55);
+      padding: 12px 16px;
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+      font-weight: 700;
+    }
+
+    .quick-nav {
+      position: sticky;
+      top: 70px;
+      z-index: 10;
+      margin: -70px auto 30px;
+      max-width: 1200px;
+      padding: 0 20px;
+    }
+    .quick-nav .inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+    .quick-nav a {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+    .quick-nav a:hover { background: rgba(208,30,67,0.15); border-color: rgba(208,30,67,0.4); }
+
+    section { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+    h2 { font-size: clamp(26px, 4vw, 38px); margin-bottom: 12px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 16px;
+      backdrop-filter: blur(6px);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease, border-color 0.35s ease;
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(208,30,67,0.5); }
+    .tag { color: var(--gold); font-weight: 800; letter-spacing: 0.06em; font-size: 12px; }
+    .card p { opacity: 0.85; }
+    .quote-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .quote-form input, .quote-form select, .quote-form textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 12px 14px;
+      color: #fff;
+      font-size: 15px;
+    }
+    .quote-form textarea { min-height: 120px; grid-column: 1/-1; }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .review {
+      position: relative;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 220px;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      box-shadow: var(--shadow);
+    }
+    .review img { width: 100%; height: 100%; object-fit: cover; }
+    .review .body { padding: 12px 14px; background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.8)); }
+    .stars { color: #ffdc64; font-size: 18px; letter-spacing: 1px; }
+
+    .sticky-bottom {
+      display: none;
+    }
+
+    @media (max-width: 820px) {
+      .nav-links { position: absolute; top: 70px; right: 20px; background: rgba(11,13,20,0.92); border:1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 12px; flex-direction: column; width: 220px; opacity: 0; pointer-events: none; transform: translateY(-8px); transition: all 0.3s ease; }
+      .nav-links.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+      .burger { display: flex; }
+      .cta-btn { display: none; }
+      .sticky-bottom {
+        position: fixed; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--green); color: #0b0d14; z-index: 30; box-shadow: 0 -8px 26px rgba(0,0,0,0.3);
+      }
+      .sticky-bottom a {
+        padding: 10px 6px; text-align: center; font-weight: 700; font-size: 12px; letter-spacing: 0.05em; transition: background 0.25s ease;
+      }
+      .sticky-bottom a:hover { background: var(--red); color: #fff; }
+      body { padding-bottom: 64px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Sinotruk_logo_2.png/640px-Sinotruk_logo_2.png" alt="Sinotruk" />
+        <span>Official Partner | Technotorg UA</span>
+      </div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#hero">Hero</a>
+        <a href="#applications">Applications</a>
+        <a href="#specs">Key Aspects</a>
+        <a href="#quote">Quote</a>
+      </nav>
+      <button class="cta-btn" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+      <div class="burger" id="burger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-copy">
+        <div class="tag">OFFICIAL LOGISTICS & HEAVY DUTY PARTNER IN UKRAINE</div>
+        <h1>Sinotruk <span class="accent">HOWO</span> Power Fleet<br/>by Technotorg</h1>
+        <p>Built for durability, efficiency, and unstoppable performance. Certified Sinotruk importer with nationwide Technotorg service & parts coverage.</p>
+        <div class="hero-meta">
+          <span class="pill">Prime Movers</span>
+          <span class="pill">Construction & Mining</span>
+          <span class="pill">Logistics & Urban Delivery</span>
+        </div>
+        <div class="logo-stack">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Sinotruk_logo_2.png/320px-Sinotruk_logo_2.png" alt="Sinotruk logo" />
+          <div aria-label="Technotorg logo">
+            <!-- Technotorg SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 499.53 130.35" width="160" role="img" aria-label="Technotorg">
+              <defs>
+                <style>
+                  .cls-1,.cls-2,.cls-3,.cls-4{fill:#d01e43;stroke:#d01e43;stroke-miterlimit:10;}
+                  .cls-2{stroke-width:.57px;}
+                  .cls-3{stroke-width:.55px;}
+                  .cls-4{stroke-width:.59px;}
+                </style>
+              </defs>
+              <g>
+                <path class="cls-1" d="M23.91,88.27a60.39,60.39,0,0,0,.4,7.78H13.39a58.81,58.81,0,0,0,.4-7.78v-26H8a64,64,0,0,0-7.46.36V52.83a64.09,64.09,0,0,0,7.36.36H29.5a62.16,62.16,0,0,0,7.7-.36v9.84a60.6,60.6,0,0,0-7.7-.36H23.91Z"/>
+                <path class="cls-1" d="M74.11,96.41A60.68,60.68,0,0,0,66,96.05H50.39c-3.75,0-5.13,0-7.26.16a49.06,49.06,0,0,0,.4-7.53V60.56a56.23,56.23,0,0,0-.4-7.52c2,.1,3.41.15,7.26.15H66.15a57.72,57.72,0,0,0,7.36-.36v9.64a57.47,57.47,0,0,0-7.36-.37H53.31v7.58H64a56.69,56.69,0,0,0,7.41-.36v9.53A58.06,58.06,0,0,0,64,78.49H53.31v8.65H66.05a63.85,63.85,0,0,0,8.06-.36Z"/>
+                <path class="cls-1" d="M94.35,89.71c-1.33,2.17-2.37,4-3.61,6.34H77.65c2.67-3.4,3.66-4.74,5.09-6.8L93.61,73.33,84.37,59.79c-1.53-2.32-3-4.33-4.84-6.6H92.32A45,45,0,0,0,96,60l3.75,6,3.71-6a43.33,43.33,0,0,0,3.6-6.75h12.7c-1.78,2.32-3,3.92-4.69,6.49l-9.29,13.6,10.92,16c1.58,2.32,3,4.17,5,6.8H108.63c-.94-1.85-1.88-3.61-3.56-6.34L99.68,81Z"/>
+                <path class="cls-1" d="M161.87,53.19a50.53,50.53,0,0,0-.4,7.63V88.43a56.27,56.27,0,0,0,.4,7.62H151.25a52.89,52.89,0,0,0,.39-7.62v-10H135v10a54.41,54.41,0,0,0,.4,7.62H124.77a50.63,50.63,0,0,0,.39-7.62V60.82a52,52,0,0,0-.39-7.63h10.62a56.9,56.9,0,0,0-.4,7.63v8.55h16.65V60.82a51.64,51.64,0,0,0-.39-7.63Z"/>
+                <path class="cls-1" d="M207.29,74.42C207.29,88,199.34,97,187.34,97s-19.91-8.81-19.91-22.46,7.81-22.3,20-22.3S207.29,60.92,207.29,74.42Zm-10.27.1c0-8.35-3.66-13.39-9.63-13.39s-9.73,5.1-9.73,13.39,3.7,13.6,9.73,13.6S197,83,197,74.52Z"/>
+                <path class="cls-1" d="M232.11,88.27a62.4,62.4,0,0,0,.39,7.78H221.59a60.76,60.76,0,0,0,.39-7.78v-26h-5.83a64,64,0,0,0-7.46.36V52.83a64.09,64.09,0,0,0,7.36.36h21.64a62.34,62.34,0,0,0,7.71-.36v9.84a60.77,60.77,0,0,0-7.71-.36h-5.58Z"/>
+                <path class="cls-1" d="M287.49,74.42C287.49,88,279.54,97,267.54,97s-19.91-8.81-19.91-22.46,7.8-22.3,19.95-22.3S287.49,60.92,287.49,74.42Zm-10.27.1c0-8.35-3.66-13.39-9.64-13.39s-9.73,5.1-9.73,13.39,3.71,13.6,9.73,13.6S277.22,83,277.22,74.52Z"/>
+                <path class="cls-1" d="M294.14,96.05a56.84,56.84,0,0,0,.4-7.62V60.56a59.31,59.31,0,0,0-.4-7.52c2.33.1,4.1.15,7.27.15h10.81c9.78,0,15.17,4.9,15.17,13.86,0,9.17-5.63,14.63-15.22,14.63h-7.8v6.59a71.53,71.53,0,0,0,.39,7.78Zm17.59-23.13c3.46,0,5.48-2,5.48-5.56S315.29,62,311.73,62h-7.36v11Z"/>
+                <path class="cls-1" d="M343.91,88.12a57.79,57.79,0,0,0,.39,7.93H333.59a54.18,54.18,0,0,0,.39-7.88V60.61a61.07,61.07,0,0,0-.39-7.57c2,.1,3.4.15,7.26.15h15a57.73,57.73,0,0,0,7.51-.36v9.89a58.7,58.7,0,0,0-7.46-.36h-12Z"/>
+                <path class="cls-2" d="M401.58,74.7a42.69,42.69,0,0,1,7-23.51V34a54.78,54.78,0,0,0,33.24,96.1h.26V117.52A42.88,42.88,0,0,1,401.58,74.7ZM480.33,34V51.19a42.59,42.59,0,0,1,7,24A43.11,43.11,0,0,1,447,117.51v12.54A54.76,54.76,0,0,0,480.33,34Z"/>
+                <g>
+                  <circle class="cls-3" cx="444.47" cy="11.99" r="11.71"/>
+                  <g>
+                    <polygon class="cls-4" points="442.09 33.51 442.09 97.56 432.71 97.56 432.71 42.95 413.96 42.95 413.96 33.51 442.09 33.51"/>
+                    <polygon class="cls-4" points="475.14 33.51 475.14 42.95 456.4 42.95 456.4 97.56 447.02 97.56 447.02 33.51 475.14 33.51"/>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="slider" id="slider">
+        <div class="slide active" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Sinotruk_logo_2.png/1200px-Sinotruk_logo_2.png'); filter: blur(6px) brightness(0.4);"></div>
+        <div class="slide" style="background-image:url('https://cdn.hswstatic.com/gif/howo-truck-16x9.jpg');"></div>
+        <div class="slide" style="background-image:url('https://raw.githubusercontent.com/AutomaBot/assets/main/howo-red-dump.webp');"></div>
+        <div class="slide" style="background-image:url('https://raw.githubusercontent.com/AutomaBot/assets/main/sinotruk-convoy.webp');"></div>
+        <div class="slider-caption">Hero highlights rotate automatically – fast navigation ready.</div>
+      </div>
+    </section>
+
+    <div class="quick-nav">
+      <div class="inner">
+        <a href="#applications">Applications</a>
+        <a href="#brands">Brand Lines</a>
+        <a href="#specs">Key Aspects</a>
+        <a href="#quote">Quote in 60s</a>
+      </div>
+    </div>
+
+    <section id="applications">
+      <h2>Common Applications</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="tag">Construction & Mining</div>
+          <p>Dump trucks (tippers) and concrete mixer trucks, available in 6x4 or 8x4 configurations for aggregates, fill, and concrete delivery in tough terrain.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Logistics & Transportation</div>
+          <p>Tractors and prime movers for long-distance haulage with semi-trailers and container transport. Suited for inland freight corridors, dry goods, and container yards.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Specialized Services</div>
+          <p>Chassis for water and oil tankers, garbage collection vehicles, fire trucks, and crane-mounted rigs with engineered stability.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Urban & Regional Transport</div>
+          <p>Light trucks under the HOWO Light family offer agile maneuverability for last-mile logistics, refrigerated transport, and municipal services.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="brands">
+      <h2>Sinotruk Brand Lines</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="tag">HOWO</div>
+          <p>Flagship heavy-duty trucks, light trucks, buses, special vehicles (mixers, tankers), and semitrailers built for global construction and logistics.</p>
+        </div>
+        <div class="card">
+          <div class="tag">SITRAK</div>
+          <p>Co-developed with MAN; premium tractors and cargo trucks with advanced comfort and safety (EBS+ESC). Ideal for long-distance transport.</p>
+        </div>
+        <div class="card">
+          <div class="tag">YELLOW RIVER</div>
+          <p>Historic SINOTRUK badge and China’s first heavy-duty truck lineage, now modernized for resilient day-to-day haulage.</p>
+        </div>
+        <div class="card">
+          <div class="tag">HOHAN</div>
+          <p>Balanced performance and comfort for general haulage and urban service fleets, optimized for efficiency.</p>
+        </div>
+        <div class="card">
+          <div class="tag">BOLDEN LIGHT VEHICLE</div>
+          <p>Commercial pickups, SUVs, and passenger options for diverse duty cycles and mixed fleet needs.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="specs">
+      <h2>Key Aspects of SINOTRUK</h2>
+      <div class="grid">
+        <div class="card"><div class="tag">History</div><p>Established in 1956; China’s first heavy-duty truck producer with a legacy of innovation.</p></div>
+        <div class="card"><div class="tag">Range</div><p>HOWO, Yellow River, HOHAN, Sitrak, and other specialized vehicles including mixers, tankers, cranes, and semitrailers.</p></div>
+        <div class="card"><div class="tag">Brand Focus</div><p>Renowned durability and engineering for harsh conditions with components tested to global standards.</p></div>
+        <div class="card"><div class="tag">Global Reach</div><p>Exports to 110+ countries; major player in international duty cycles with localized support networks.</p></div>
+        <div class="card"><div class="tag">Technology</div><p>Advanced powertrains, safety systems, and R&D collaborations (including MAN) powering efficiency and reliability.</p></div>
+      </div>
+    </section>
+
+    <section id="quote">
+      <h2>Get a Quote in 60 seconds</h2>
+      <p>Fast-track your fleet: share your mission, payload, and routes — we respond with a tailored HOWO or SITRAK spec instantly.</p>
+      <form class="quote-form">
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Work Email" required />
+        <input type="tel" placeholder="Phone / WhatsApp" required />
+        <select required>
+          <option value="">Select Vehicle Type</option>
+          <option>HOWO 6x4 Tipper</option>
+          <option>HOWO 8x4 Mixer</option>
+          <option>SITRAK Tractor</option>
+          <option>HOHAN Chassis</option>
+          <option>Custom Spec</option>
+        </select>
+        <input type="text" placeholder="Payload / Route" />
+        <textarea placeholder="Project notes: cargo type, routes, urgency"></textarea>
+        <button type="submit" class="cta-btn" style="grid-column: 1/-1">Send & Get Offer</button>
+      </form>
+    </section>
+
+    <section id="reviews">
+      <h2>Reviews & Field Shots</h2>
+      <div class="reviews">
+        <div class="review">
+          <img src="https://raw.githubusercontent.com/AutomaBot/assets/main/howo-red-dump.webp" alt="HOWO Dump" />
+          <div class="body">
+            <div class="stars">★★★★★</div>
+            <p>“6x4 Tipper running 18 hours daily — fuel efficient and zero downtime.”</p>
+          </div>
+        </div>
+        <div class="review">
+          <img src="https://raw.githubusercontent.com/AutomaBot/assets/main/sinotruk-convoy.webp" alt="Fleet" />
+          <div class="body">
+            <div class="stars">★★★★★</div>
+            <p>“Technotorg support is immediate — parts and service nationwide.”</p>
+          </div>
+        </div>
+        <div class="review">
+          <img src="https://cdn.hswstatic.com/gif/howo-truck-16x9.jpg" alt="HOWO on site" />
+          <div class="body">
+            <div class="stars">★★★★☆</div>
+            <p>“Cab comfort and torque delivery rival premium European tractors.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="sticky-bottom">
+    <a href="#hero">Hero</a>
+    <a href="#applications">Uses</a>
+    <a href="#quote">Quote</a>
+    <a href="#reviews">Reviews</a>
+  </nav>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 3800);
+
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  </script>
+</body>
+</html>
