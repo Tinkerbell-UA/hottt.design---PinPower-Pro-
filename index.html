@@ -79,6 +79,10 @@
         overflow-x: hidden;
       }
 
+      .page.has-bottom-nav {
+        padding-bottom: 72px;
+      }
+
       .container {
         width: min(1200px, 100% - 32px);
         margin: 0 auto;
@@ -390,6 +394,35 @@
         padding: 64px 0;
       }
 
+      .brand-strip {
+        display: grid;
+        gap: 16px;
+      }
+
+      .brand-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+
+      .brand-card {
+        padding: 18px;
+        border-radius: var(--radius-md);
+        background: var(--bg-elev);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: grid;
+        gap: 8px;
+        align-content: center;
+        min-height: 120px;
+        transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+      }
+
+      .brand-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(196, 18, 48, 0.5);
+        box-shadow: var(--shadow-card);
+      }
+
       .section-head {
         display: grid;
         gap: 12px;
@@ -452,6 +485,83 @@
         gap: 16px;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         margin-top: 20px;
+      }
+
+      .catalog-3d {
+        position: relative;
+        margin-top: 24px;
+        perspective: 1200px;
+        height: 360px;
+      }
+
+      .carousel-track {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 320px;
+        height: 320px;
+        transform-style: preserve-3d;
+        animation: carouselSpin 32s linear infinite;
+      }
+
+      .carousel-track.is-paused {
+        animation-play-state: paused;
+      }
+
+      .carousel-item {
+        position: absolute;
+        width: 220px;
+        min-height: 200px;
+        padding: 16px;
+        border-radius: var(--radius-md);
+        background: linear-gradient(140deg, rgba(20, 25, 34, 0.92), rgba(10, 12, 18, 0.9));
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: var(--shadow-card);
+        transform-style: preserve-3d;
+        transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+        cursor: pointer;
+      }
+
+      .carousel-item.active {
+        border-color: rgba(196, 18, 48, 0.8);
+        box-shadow: 0 20px 40px rgba(196, 18, 48, 0.25);
+      }
+
+      .carousel-item .cta-panel {
+        margin-top: 14px;
+        display: grid;
+        gap: 10px;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity var(--transition-fast), max-height var(--transition-fast);
+      }
+
+      .carousel-item.active .cta-panel {
+        opacity: 1;
+        max-height: 120px;
+      }
+
+      .cta-panel .btn {
+        width: 100%;
+        padding: 10px 16px;
+        font-size: 14px;
+      }
+
+      .catalog-meta {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 18px;
+      }
+
+      .catalog-meta span {
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text-muted);
       }
 
       .card {
@@ -731,6 +841,51 @@
         .phone-btn span.short {
           display: inline;
         }
+
+        .catalog-3d {
+          height: 300px;
+        }
+
+        .carousel-track {
+          width: 260px;
+          height: 260px;
+        }
+
+        .carousel-item {
+          width: 200px;
+        }
+      }
+
+      .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(10, 12, 16, 0.96);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 10px 16px;
+        display: none;
+        z-index: 30;
+      }
+
+      .bottom-nav a {
+        font-size: 12px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .bottom-nav .nav-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        text-align: center;
+      }
+
+      @media (max-width: 640px) {
+        .bottom-nav {
+          display: block;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -747,6 +902,19 @@
 
         .hero-shimmer {
           display: none;
+        }
+
+        .carousel-track {
+          animation: none;
+        }
+      }
+
+      @keyframes carouselSpin {
+        0% {
+          transform: rotateY(0deg);
+        }
+        100% {
+          transform: rotateY(360deg);
         }
       }
     </style>
@@ -770,7 +938,7 @@
         "brand": "Case IH"
       }
     </script>
-    <div class="page">
+    <div class="page has-bottom-nav">
       <header class="header" id="siteHeader">
         <div class="container header-inner">
           <div class="logo-group">
@@ -865,21 +1033,73 @@
           </div>
         </section>
 
+        <section id="brands">
+          <div class="container">
+            <div class="section-head">
+              <p class="eyebrow">Інші бренди</p>
+              <h2 class="title-lg">Портфель техніки та рішень.</h2>
+              <p class="subtitle">Kverneland, Great Plains, Farmet, Dieci, Capello, Tecnoma, KWD, Ziegler, Kuhn, ЕГРІТЕК.</p>
+            </div>
+            <div class="brand-grid">
+              <div class="brand-card">
+                <p class="title-md">Kverneland</p>
+                <p class="subtitle">Плуги, борони, сівалки, обприскувачі.</p>
+              </div>
+              <div class="brand-card">
+                <p class="title-md">Great Plains</p>
+                <p class="subtitle">Борони, культиватори, сівалки.</p>
+              </div>
+              <div class="brand-card">
+                <p class="title-md">Farmet</p>
+                <p class="subtitle">Компактори, борони, посівні комплекси.</p>
+              </div>
+              <div class="brand-card">
+                <p class="title-md">Dieci</p>
+                <p class="subtitle">Телескопічні навантажувачі, Truck Mixer.</p>
+              </div>
+              <div class="brand-card">
+                <p class="title-md">Capello</p>
+                <p class="subtitle">Жатки для зернових та соняшника.</p>
+              </div>
+              <div class="brand-card">
+                <p class="title-md">Tecnoma</p>
+                <p class="subtitle">Обприскувачі, точні системи.</p>
+              </div>
+              <div class="brand-card">
+                <p class="title-md">KWD</p>
+                <p class="subtitle">Аплікатори для внесення добрив.</p>
+              </div>
+              <div class="brand-card">
+                <p class="title-md">Ziegler</p>
+                <p class="subtitle">Жатки, столи, трейлери.</p>
+              </div>
+              <div class="brand-card">
+                <p class="title-md">Kuhn</p>
+                <p class="subtitle">Обприскувачі та рішення.</p>
+              </div>
+              <div class="brand-card">
+                <p class="title-md">ЕГРІТЕК</p>
+                <p class="subtitle">Бункери та причепи.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="catalog">
           <div class="container">
             <div class="section-head">
               <p class="eyebrow">Каталог</p>
-              <h2 class="title-lg">Техніка Case IH. Чітко по задачі.</h2>
-              <p class="subtitle">Обирайте бренд і категорію. Команда підбере комплектацію без шуму.</p>
+              <h2 class="title-lg">3D каталог техніки. Оберіть бренд і категорію.</h2>
+              <p class="subtitle">Галерея рухається по колу. Натисніть на модель, щоб отримати CTA.</p>
             </div>
             <div class="catalog-controls">
               <div class="brand-scroll" id="brandScroll"></div>
               <div class="category-row" id="categoryRow"></div>
             </div>
-            <div class="catalog-grid" id="catalogGrid"></div>
-            <div class="catalog-cta">
-              <a class="btn btn-primary" href="#contacts">Запитати комплектацію</a>
+            <div class="catalog-3d">
+              <div class="carousel-track" id="carouselTrack"></div>
             </div>
+            <div class="catalog-meta" id="catalogMeta"></div>
           </div>
         </section>
 
@@ -1027,6 +1247,16 @@
       </footer>
     </div>
 
+    <nav class="bottom-nav" aria-label="Швидке меню">
+      <div class="nav-grid">
+        <a href="#hero">Hero</a>
+        <a href="#brands">Бренди</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#service">Сервіс</a>
+        <a href="#contacts">Контакти</a>
+      </div>
+    </nav>
+
     <script>
       const heroSlides = [
         {
@@ -1047,26 +1277,208 @@
       ];
 
       const catalogData = [
-        { brand: "Case IH", category: "Трактори", model: "Magnum AFS", status: "available" },
-        { brand: "Case IH", category: "Комбайни", model: "Axial-Flow 8250", status: "order" },
-        { brand: "Case IH", category: "Обприскувачі", model: "Patriot 3330", status: "available" },
-        { brand: "Case IH", category: "Трактори", model: "Optum 300 CVX", status: "order" },
-        { brand: "Case IH", category: "Сівалки", model: "Early Riser 220", status: "available" },
-        { brand: "Case IH", category: "Трактори", model: "Puma 240", status: "available" },
-        { brand: "Case IH", category: "Комбайни", model: "Axial-Flow 9250", status: "order" },
-        { brand: "Case IH", category: "Обприскувачі", model: "Patriot 4350", status: "order" },
-        { brand: "AFS Connect", category: "Телематика", model: "AFS Pro 1200", status: "available" },
-        { brand: "AFS Connect", category: "Навігація", model: "AFS AccuGuide", status: "available" },
-        { brand: "Raven", category: "Навігація", model: "Raven CR7", status: "order" },
-        { brand: "Precision Tech", category: "Точне землеробство", model: "Field Analytics", status: "available" }
+        { brand: "Kverneland", category: "Плуги", model: "Kverneland 150 B (3+1)" },
+        { brand: "Kverneland", category: "Плуги", model: "Kverneland LD 100 (4+1)" },
+        { brand: "Kverneland", category: "Плуги", model: "Kverneland RN 100 7+1" },
+        { brand: "Kverneland", category: "Плуги", model: "Kverneland RN 100 8" },
+        { brand: "Kverneland", category: "Плуги", model: "Kverneland RN 100 8+1" },
+        { brand: "Kverneland", category: "Плуги", model: "Kverneland RN 100 On-Land 8+1" },
+        { brand: "Kverneland", category: "Системи", model: "Система On-Land Kverneland" },
+        { brand: "Kverneland", category: "Борони", model: "QUALIDISC PRO T 4000" },
+        { brand: "Kverneland", category: "Борони", model: "QUALIDISC PRO T 5000" },
+        { brand: "Kverneland", category: "Борони", model: "QUALIDISC PRO T 6000" },
+        { brand: "Kverneland", category: "Борони", model: "QUALIDISC PRO T 7000" },
+        { brand: "Kverneland", category: "Борони", model: "QUALIDISC Farmer 4000" },
+        { brand: "Kverneland", category: "Борони", model: "QUALIDISC Farmer 5000" },
+        { brand: "Kverneland", category: "Сівалки", model: "Monopill 24 секції" },
+        { brand: "Kverneland", category: "Сівалки", model: "Monopill 24 секції + мікро-добрива" },
+        { brand: "Kverneland", category: "Сівалки", model: "Monopill 12 секцій" },
+        { brand: "Kverneland", category: "Сівалки", model: "Optima TFMaxi HD II" },
+        { brand: "Kverneland", category: "Сівалки", model: "Optima TFprofi HD II" },
+        { brand: "Kverneland", category: "Сівалки", model: "Optima TFprofi SX" },
+        { brand: "Kverneland", category: "Посівні комплекси", model: "U-drill plus 4000" },
+        { brand: "Kverneland", category: "Посівні комплекси", model: "U-drill plus 6000" },
+        { brand: "Kverneland", category: "Розкидачі", model: "EXACTA HL" },
+        { brand: "Kverneland", category: "Розкидачі", model: "EXACTA TL GEO" },
+        { brand: "Kverneland", category: "Обприскувачі", model: "iXtrack T3" },
+        { brand: "Kverneland", category: "Культиватори", model: "Onix 24 + Lynx 3000" },
+        { brand: "Kverneland", category: "Обприскувачі", model: "iXdrive S6 (демо, 850 га, 165 мотогодин)" },
+        { brand: "Great Plains", category: "Борони", model: "СТ8300-60" },
+        { brand: "Great Plains", category: "Борони", model: "Turbo-Max 1800TM" },
+        { brand: "Great Plains", category: "Борони", model: "Turbo-Max 2400TM" },
+        { brand: "Great Plains", category: "Борони", model: "Turbo-Max 3000TM" },
+        { brand: "Great Plains", category: "Борони", model: "Turbo-Max VT1100-20" },
+        { brand: "Great Plains", category: "Борони", model: "Turbo-Max VT1100-25" },
+        { brand: "Great Plains", category: "Борони", model: "Turbo-Max VT1110-6,0" },
+        { brand: "Great Plains", category: "Борони", model: "Turbo-Max VT1110-7,5" },
+        { brand: "Great Plains", category: "Борони", model: "X-Press SIMBA" },
+        { brand: "Great Plains", category: "Культиватори", model: "8328 FCF" },
+        { brand: "Great Plains", category: "Культиватори", model: "8328 FCC" },
+        { brand: "Great Plains", category: "Культиватори", model: "8539 FCC" },
+        { brand: "Great Plains", category: "Культиватори", model: "8539 FCF" },
+        { brand: "Great Plains", category: "Культиватори", model: "8544 FCC" },
+        { brand: "Great Plains", category: "Культиватори", model: "8544 FCF" },
+        { brand: "Great Plains", category: "Сівалки", model: "SSH-2000F" },
+        { brand: "Great Plains", category: "Сівалки", model: "CPH-2000F" },
+        { brand: "Great Plains", category: "Сівалки", model: "3S-4000F" },
+        { brand: "Great Plains", category: "Сівалки", model: "PD8070" },
+        { brand: "Great Plains", category: "Сівалки", model: "NTA907-2-6006" },
+        { brand: "Great Plains", category: "Сівалки", model: "NTA907-4875 пневматична" },
+        { brand: "Great Plains", category: "Сівалки", model: "NTA-3510-5575 з тележкою ADC2352" },
+        { brand: "Great Plains", category: "Автопідрулювання", model: "NTA-3510-5575 з тележкою ADC2352" },
+        { brand: "Great Plains", category: "Сівалки", model: "1006NT-1607" },
+        { brand: "Great Plains", category: "Сівалки", model: "PL5500-0870 (демо 15 га)" },
+        { brand: "Great Plains", category: "Сівалки", model: "PL5800-IR-3135" },
+        { brand: "Farmet", category: "Компактори", model: "Kompaktomat K600 PS (подвійний каток Crosskill)" },
+        { brand: "Farmet", category: "Компактори", model: "Kompaktomat K600 PS" },
+        { brand: "Farmet", category: "Компактори", model: "Kompaktomat K800 PS" },
+        { brand: "Farmet", category: "Компактори", model: "Kompaktomat K800 PS (подвійний каток Crosskill)" },
+        { brand: "Farmet", category: "Компактори", model: "Kompaktomat K1000 PS" },
+        { brand: "Farmet", category: "Компактори", model: "Kompaktomat K1250 MAX" },
+        { brand: "Farmet", category: "Борони", model: "Softer 8 PS" },
+        { brand: "Farmet", category: "Борони", model: "Softer 6 PS" },
+        { brand: "Farmet", category: "Посівні комплекси", model: "Falcon 4 PRO Fert+" },
+        { brand: "Farmet", category: "Посівні комплекси", model: "Falcon 6 PRO Fert+" },
+        { brand: "Duport", category: "Аплікатори", model: "Liquiliser SW 15060" },
+        { brand: "Dieci", category: "Навантажувачі", model: "MINI AGRI 25.6" },
+        { brand: "Dieci", category: "Навантажувачі", model: "Apollo Y 26.6" },
+        { brand: "Dieci", category: "Навантажувачі", model: "AGRI TECH 32.9" },
+        { brand: "Dieci", category: "Навантажувачі", model: "AGRI TECH 35.7" },
+        { brand: "Dieci", category: "Навантажувачі", model: "AgriStar 37.7 / Zeus 37.7 Standard" },
+        { brand: "Dieci", category: "Навантажувачі", model: "AgriStar 38.10 / Zeus 38.10" },
+        { brand: "Dieci", category: "Навантажувачі", model: "Agri Plus 38.9" },
+        { brand: "Dieci", category: "Навантажувачі", model: "Agri Plus 40.7" },
+        { brand: "Dieci", category: "Навантажувачі", model: "AgriMax 45.8" },
+        { brand: "Dieci", category: "Навантажувачі", model: "Samson 75.10" },
+        { brand: "Dieci", category: "Навантажувачі", model: "Icarus 40.17" },
+        { brand: "Dieci", category: "Навантажувачі", model: "Runner 40.13" },
+        { brand: "Dieci", category: "Навантажувачі", model: "Icarus 55.17" },
+        { brand: "Dieci", category: "Truck Mixer", model: "L2400" },
+        { brand: "Dieci", category: "Truck Mixer", model: "L3500" },
+        { brand: "Dieci", category: "Truck Mixer", model: "L4700" },
+        { brand: "Dieci", category: "Truck Mixer", model: "F7000" },
+        { brand: "Dieci", category: "Навантажувачі", model: "AgriPivot T80" },
+        { brand: "Dieci", category: "Навантажувачі", model: "TBN0311" },
+        { brand: "Dieci", category: "Навантажувачі", model: "TBN0309" },
+        { brand: "Dieci", category: "Навантажувачі", model: "TGN0007" },
+        { brand: "Dieci", category: "Навантажувачі", model: "BUD7037" },
+        { brand: "Dieci", category: "Навантажувачі", model: "482574" },
+        { brand: "Capello", category: "Жатки", model: "Quasar F6" },
+        { brand: "Capello", category: "Жатки", model: "Quasar F8" },
+        { brand: "Capello", category: "Жатки", model: "Quasar F12" },
+        { brand: "Capello", category: "Жатки", model: "Diamant D8" },
+        { brand: "Capello", category: "Жатки", model: "HELIANTHUS 7500" },
+        { brand: "Capello", category: "Жатки", model: "HELIANTHUS 9400" },
+        { brand: "Tecnoma", category: "Обприскувачі", model: "Laser 4230/16 HVC LVS I-TOPS" },
+        { brand: "Tecnoma", category: "Обприскувачі", model: "TECNIS 3100 24/12 HLE SC SMARTOP" },
+        { brand: "KWD", category: "Аплікатори", model: "АПИ-11.2 NEW (44 робочих органи)" },
+        { brand: "KWD", category: "Аплікатори", model: "АПИ-9 NEW (36 робочих органів)" },
+        { brand: "KWD", category: "Аплікатори", model: "АПИ-6 NEW (24 робочих органи)" },
+        { brand: "KWD", category: "Аплікатори", model: "АПИ-6 (24 робочих органи)" },
+        { brand: "KWD", category: "Аплікатори", model: "АПИ-9 (36 робочих органів)" },
+        { brand: "KWD", category: "Аплікатори", model: "АПИ-11,2 (44 робочих органи)" },
+        { brand: "KWD", category: "Аплікатори", model: "АПИ-12 (48 робочих органів)" },
+        { brand: "KWD", category: "Аплікатори", model: "АПИ-16 (64 робочих органи)" },
+        { brand: "Ziegler", category: "Жатки", model: "CC 6S CL 6/70 Pro Drive" },
+        { brand: "Ziegler", category: "Жатки", model: "Corn Champion 8/70" },
+        { brand: "Ziegler", category: "Жатки", model: "Corn Champion 12/70" },
+        { brand: "Ziegler", category: "Жатки", model: "Sunflower Champion Rowfree 7400" },
+        { brand: "Ziegler", category: "Жатки", model: "Sunflower Champion Rowfree 9400" },
+        { brand: "Ziegler", category: "Жатки", model: "Sunflower Champion 8/70" },
+        { brand: "Ziegler", category: "Жатки", model: "Sunflower Champion 12/70" },
+        { brand: "Ziegler", category: "Ріпакові столи", model: "CNH 20GHDP" },
+        { brand: "Ziegler", category: "Ріпакові столи", model: "CNH 24GHCP" },
+        { brand: "Ziegler", category: "Ріпакові столи", model: "CNH 30GHCP" },
+        { brand: "Ziegler", category: "Трейлери", model: "Header Trailers 4WT MACDON" },
+        { brand: "Ziegler", category: "Трейлери", model: "Header Trailers 2WT NH" },
+        { brand: "Kuhn", category: "Обприскувачі", model: "FIGHTER 3000-30м" },
+        { brand: "ЕГРІТЕК / Пожмашина", category: "Бункери", model: "БНП-16" },
+        { brand: "ЕГРІТЕК / Пожмашина", category: "Опції", model: "Комплектації БНП-16" },
+        { brand: "ЕГРІТЕК / Пожмашина", category: "Бункери", model: "БНП-20-2" },
+        { brand: "ЕГРІТЕК / Пожмашина", category: "Опції", model: "Комплектації БНП-20-2" },
+        { brand: "ЕГРІТЕК / Пожмашина", category: "Бункери", model: "БНП-30" },
+        { brand: "ЕГРІТЕК / Пожмашина", category: "Опції", model: "Комплектації БНП-30" },
+        { brand: "ЕГРІТЕК / Пожмашина", category: "Опції", model: "Комплектації BNP-30ES22" },
+        { brand: "ЕГРІТЕК / Пожмашина", category: "Бункери", model: "БНП-40" },
+        { brand: "ЕГРІТЕК / Пожмашина", category: "Опції", model: "Комплектації БНП-40" },
+        { brand: "ЕГРІТЕК / Пожмашина", category: "Причепи", model: "НПСТ-24" },
+        { brand: "ЕГРІТЕК / Пожмашина", category: "Причепи", model: "МЗП-180" },
+        { brand: "Case IH", category: "Трактори", model: "Farmall 110JX" },
+        { brand: "Case IH", category: "Трактори", model: "Farmall 110M" },
+        { brand: "Case IH", category: "Трактори", model: "Maxxum 110" },
+        { brand: "Case IH", category: "Трактори", model: "Maxxum 125" },
+        { brand: "Case IH", category: "Трактори", model: "Maxxum 140" },
+        { brand: "Case IH", category: "Трактори", model: "Puma 155" },
+        { brand: "Case IH", category: "Трактори", model: "Puma 200 (грудень 2026)" },
+        { brand: "Case IH", category: "Трактори", model: "Puma 220 (грудень 2025)" },
+        { brand: "Case IH", category: "Трактори", model: "Magnum 340" },
+        { brand: "Case IH", category: "Трактори", model: "Magnum 355 (4 квартал 2025)" },
+        { brand: "Case IH", category: "Трактори", model: "Steiger 525" },
+        { brand: "Case IH", category: "Трактори", model: "Steiger 645" },
+        { brand: "Case IH", category: "Комбайни", model: "CASE 6150" },
+        { brand: "Case IH", category: "Комбайни", model: "AXIAL FLOW 6160 (травень 2026)" },
+        { brand: "Case IH", category: "Комбайни", model: "AXIAL FLOW 6160 Stage V (лютий 2026)" },
+        { brand: "Case IH", category: "Комбайни", model: "CASE 7160" },
+        { brand: "Case IH", category: "Комбайни", model: "AXIAL FLOW 7160 (травень 2026)" },
+        { brand: "Case IH", category: "Комбайни", model: "AXIAL FLOW 7160 Stage V (лютий 2026)" },
+        { brand: "Case IH", category: "Комбайни", model: "AXIAL FLOW 7260 (травень 2026)" },
+        { brand: "Case IH", category: "Комбайни", model: "AXIAL FLOW 7260 (травень 2026)" },
+        { brand: "Case IH", category: "Комбайни", model: "7250 Stage V TRK (лютий 2026)" },
+        { brand: "Case IH", category: "Комбайни", model: "AXIAL FLOW 8260 (травень 2026)" },
+        { brand: "Case IH", category: "Комбайни", model: "8250 TRK Stage V (лютий 2026)" },
+        { brand: "Case IH", category: "Жатки", model: "3C25FD" },
+        { brand: "Case IH", category: "Жатки", model: "3C30FD" },
+        { brand: "Case IH", category: "Жатки", model: "3C30FD (Європа)" },
+        { brand: "Case IH", category: "Жатки", model: "3P30VD (Європа)" },
+        { brand: "Case IH", category: "Обприскувачі", model: "PATRIOT 350 (лютий 2026)" },
+        { brand: "Case IH", category: "Обприскувачі", model: "PATRIOT 4050 (квітень 2026)" },
+        { brand: "Case IH", category: "Обприскувачі", model: "PATRIOT 4350 (лютий 2026)" }
       ];
 
-      const brands = ["Case IH", "AFS Connect", "Raven", "Precision Tech"];
-      const categories = ["Всі", "Трактори", "Комбайни", "Обприскувачі", "Сівалки", "Навігація", "Телематика", "Точне землеробство"];
+      const brands = [
+        "Всі бренди",
+        "Case IH",
+        "Kverneland",
+        "Great Plains",
+        "Farmet",
+        "Dieci",
+        "Capello",
+        "Tecnoma",
+        "KWD",
+        "Ziegler",
+        "Kuhn",
+        "ЕГРІТЕК / Пожмашина",
+        "Duport"
+      ];
+      const categories = [
+        "Всі",
+        "Трактори",
+        "Комбайни",
+        "Жатки",
+        "Обприскувачі",
+        "Плуги",
+        "Борони",
+        "Сівалки",
+        "Посівні комплекси",
+        "Культиватори",
+        "Компактори",
+        "Розкидачі",
+        "Аплікатори",
+        "Автопідрулювання",
+        "Навантажувачі",
+        "Truck Mixer",
+        "Системи",
+        "Бункери",
+        "Причепи",
+        "Опції",
+        "Ріпакові столи",
+        "Трейлери"
+      ];
 
       const brandScroll = document.getElementById("brandScroll");
       const categoryRow = document.getElementById("categoryRow");
-      const catalogGrid = document.getElementById("catalogGrid");
+      const carouselTrack = document.getElementById("carouselTrack");
+      const catalogMeta = document.getElementById("catalogMeta");
       const heroDots = document.getElementById("heroDots");
       const heroTitle = document.getElementById("heroTitle");
       const heroText = document.getElementById("heroText");
@@ -1113,38 +1525,67 @@
         });
       }
 
-      function renderCatalog(items) {
-        catalogGrid.innerHTML = "";
-        items.forEach((item) => {
+      function renderCarousel(items) {
+        carouselTrack.innerHTML = "";
+        const safeItems = items.length ? items : [{ brand: "Каталог", category: "Фільтр", model: "Нічого не знайдено" }];
+        const count = Math.max(safeItems.length, 1);
+        const angleStep = 360 / count;
+        const radius = window.matchMedia("(max-width: 640px)").matches ? 220 : 300;
+        safeItems.forEach((item, index) => {
           const card = document.createElement("div");
-          card.className = "card";
+          card.className = "carousel-item";
+          const angle = angleStep * index;
+          card.dataset.angle = String(angle);
+          card.dataset.radius = String(radius);
+          card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
           card.innerHTML = `
-            <div>
-              <span class="badge ${item.status}">${item.status === "available" ? "В наявності" : "Під замовлення"}</span>
+            <p class="eyebrow">${item.brand}</p>
+            <h3 class="title-md">${item.model}</h3>
+            <p class="subtitle">${item.category}</p>
+            <div class="cta-panel">
+              <a class="btn btn-secondary" href="tel:+380994454195">Подзвонити</a>
+              <a class="btn btn-primary" href="#contacts">Запросити оферту</a>
+              <a class="btn btn-secondary" href="#contacts">Більше інформації / ціна</a>
             </div>
-            <div>
-              <p class="eyebrow">${item.category}</p>
-              <h3 class="title-md">${item.model}</h3>
-              <p class="subtitle">${item.brand}</p>
-            </div>
-            <div class="arrow">Деталі <span>→</span></div>
           `;
-          catalogGrid.appendChild(card);
+          card.addEventListener("click", () => toggleCarouselCard(card));
+          carouselTrack.appendChild(card);
         });
+        catalogMeta.innerHTML = `
+          <span>Позицій: ${items.length}</span>
+          <span>Формат: 3D галерея</span>
+          <span>CTA: дзвінок, оферта, ціна</span>
+        `;
+      }
+
+      function toggleCarouselCard(card) {
+        const isActive = card.classList.contains("active");
+        document.querySelectorAll(".carousel-item").forEach((item) => {
+          item.classList.remove("active");
+          const angle = item.dataset.angle || "0";
+          const radius = item.dataset.radius || "300";
+          item.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+        });
+        if (!isActive) {
+          card.classList.add("active");
+          const angle = card.dataset.angle || "0";
+          const radius = Number(card.dataset.radius || "300") + 40;
+          card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px) scale(1.03)`;
+        }
       }
 
       function updateCatalog() {
         const activeBrand = document.querySelector(".brand-pill.active")?.dataset.brand;
         const activeCategory = document.querySelector(".category-btn.active")?.dataset.category;
         const filtered = catalogData.filter((item) => {
-          const brandMatch = !activeBrand || item.brand === activeBrand;
+          const brandMatch = !activeBrand || activeBrand === "Всі бренди" || item.brand === activeBrand;
           const categoryMatch = activeCategory === "Всі" || item.category === activeCategory;
           return brandMatch && categoryMatch;
         });
-        catalogGrid.classList.add("is-changing");
+        carouselTrack.classList.add("is-paused");
         setTimeout(() => {
-          renderCatalog(filtered);
-          requestAnimationFrame(() => catalogGrid.classList.remove("is-changing"));
+          renderCarousel(filtered);
+          requestAnimationFrame(() => carouselTrack.classList.remove("is-paused"));
         }, 180);
       }
 
@@ -1259,6 +1700,17 @@
         cards.forEach((card) => observer.observe(card));
       }
 
+      function setupCarousel() {
+        if (!carouselTrack) return;
+        const pause = () => carouselTrack.classList.add("is-paused");
+        const play = () => carouselTrack.classList.remove("is-paused");
+        carouselTrack.addEventListener("mouseenter", pause);
+        carouselTrack.addEventListener("mouseleave", play);
+        carouselTrack.addEventListener("focusin", pause);
+        carouselTrack.addEventListener("focusout", play);
+        window.addEventListener("resize", () => updateCatalog());
+      }
+
       function setupHeader() {
         const header = document.getElementById("siteHeader");
         window.addEventListener("scroll", () => {
@@ -1281,6 +1733,7 @@
       setupHero();
       setupParallax();
       setupReveal();
+      setupCarousel();
       setupHeader();
       setupForm();
     </script>
